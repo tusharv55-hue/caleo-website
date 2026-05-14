@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Caleo — Warmth & Care Baby Skincare</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--cr:#FDF6EE;--warm:#F5E9D0;--gold:#BF9B5F;--deep:#1C120A;--soft:#7A6248;--white:#FFFFFF;}
+body{font-family:'Outfit',sans-serif;color:var(--deep);background:var(--cr);}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 40px;border-bottom:0.5px solid rgba(191,155,95,0.3);position:sticky;top:0;z-index:100;background:var(--cr);}
+.logo{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;letter-spacing:6px;color:var(--deep);}
+.logo span{color:var(--gold);}
+.nav-links{display:flex;gap:28px;list-style:none;}
+.nav-links a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--soft);text-decoration:none;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+.shop-btn{font-size:10px;letter-spacing:2px;text-transform:uppercase;padding:10px 22px;background:var(--deep);color:var(--cr);border:none;border-radius:2px;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .2s;}
+.shop-btn:hover{background:var(--gold);}
+.hero{min-height:90vh;display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center;padding:60px 40px;border-bottom:0.5px solid rgba(191,155,95,0.2);}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:24px;}
+.hero-dot{width:4px;height:4px;border-radius:50%;background:var(--gold);}
+.hero-h1{font-family:'Playfair Display',serif;font-size:72px;font-weight:700;line-height:1.05;color:var(--deep);margin-bottom:22px;}
+.hero-h1 em{font-style:italic;color:var(--gold);}
+.hero-p{font-size:15px;line-height:1.9;color:var(--soft);max-width:500px;margin:0 auto 40px;}
+.hero-chars{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:48px;}
+.hc{background:var(--warm);border-radius:80px;padding:20px 16px;display:flex;flex-direction:column;align-items:center;gap:8px;border:0.5px solid rgba(191,155,95,0.25);transition:transform .25s;min-width:90px;}
+.hc:hover{transform:translateY(-6px);}
+.hc-emoji{font-size:36px;line-height:1;}
+.hc-name{font-family:'Playfair Display',serif;font-size:13px;color:var(--deep);}
+.hc-prod{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft);}
+.waitlist-box{background:var(--deep);border-radius:16px;padding:36px 48px;display:flex;flex-direction:column;align-items:center;gap:16px;max-width:520px;margin:0 auto;}
+.waitlist-title{font-family:'Playfair Display',serif;font-size:26px;font-style:italic;color:var(--cr);}
+.waitlist-sub{font-size:13px;color:rgba(253,246,238,.6);text-align:center;line-height:1.7;}
+.waitlist-form{display:flex;gap:0;width:100%;}
+.waitlist-input{flex:1;padding:14px 18px;border:none;border-radius:2px 0 0 2px;font-family:'Outfit',sans-serif;font-size:13px;outline:none;background:rgba(255,255,255,.1);color:var(--cr);border:0.5px solid rgba(191,155,95,.4);border-right:none;}
+.waitlist-input::placeholder{color:rgba(253,246,238,.4);}
+.waitlist-btn{padding:14px 22px;background:var(--gold);color:var(--deep);border:none;border-radius:0 2px 2px 0;font-family:'Outfit',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-weight:500;transition:all .2s;white-space:nowrap;}
+.waitlist-btn:hover{background:var(--cr);}
+.waitlist-note{font-size:10px;color:rgba(253,246,238,.35);letter-spacing:1px;}
+.success-msg{display:none;font-size:14px;color:#86EFAC;text-align:center;padding:8px;}
+.trust{display:flex;justify-content:center;flex-wrap:wrap;gap:0;border-top:0.5px solid rgba(191,155,95,0.2);border-bottom:0.5px solid rgba(191,155,95,0.2);}
+.trust-item{display:flex;align-items:center;gap:10px;padding:16px 28px;border-right:0.5px solid rgba(191,155,95,.2);}
+.trust-item:last-child{border-right:none;}
+.trust-icon{font-size:16px;}
+.trust-text{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft);}
+.products{padding:70px 40px;}
+.sec-hdr{text-align:center;margin-bottom:50px;}
+.sec-eyebrow{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.sec-title{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--deep);}
+.sec-title em{font-style:italic;color:var(--gold);}
+.sec-sub{font-size:13px;color:var(--soft);margin-top:10px;line-height:1.7;}
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:768px){.prod-grid{grid-template-columns:1fr 1fr;}.hero-h1{font-size:44px;}.nav-links{display:none;}}
+@media(max-width:480px){.prod-grid{grid-template-columns:1fr;}.waitlist-form{flex-direction:column;}.waitlist-input{border-radius:2px;border-right:0.5px solid rgba(191,155,95,.4);margin-bottom:8px;}.waitlist-btn{border-radius:2px;}}
+.prod-card{border:0.5px solid rgba(191,155,95,.2);border-radius:16px;overflow:hidden;transition:all .25s;}
+.prod-card:hover{transform:translateY(-5px);border-color:var(--gold);}
+.prod-top{height:180px;display:flex;align-items:center;justify-content:center;position:relative;flex-direction:column;gap:6px;}
+.prod-emoji{font-size:64px;line-height:1;}
+.prod-badge{position:absolute;top:12px;right:12px;font-size:8px;letter-spacing:1.5px;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:rgba(255,255,255,.85);color:var(--soft);border:0.5px solid rgba(191,155,95,.3);}
+.prod-info{padding:18px;border-top:0.5px solid rgba(191,155,95,.12);background:var(--white);}
+.prod-char{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:3px;}
+.prod-title{font-family:'Playfair Display',serif;font-size:18px;color:var(--deep);margin-bottom:6px;}
+.prod-desc{font-size:11px;color:var(--soft);line-height:1.6;margin-bottom:14px;}
+.prod-footer{display:flex;justify-content:space-between;align-items:center;}
+.prod-price{font-family:'Playfair Display',serif;font-size:20px;color:var(--deep);}
+.prod-price small{font-size:11px;color:var(--soft);font-family:'Outfit',sans-serif;}
+.soon-btn{font-size:9px;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;border:0.5px solid rgba(191,155,95,.5);color:var(--soft);background:transparent;border-radius:2px;cursor:default;font-family:'Outfit',sans-serif;}
+.story{display:grid;grid-template-columns:1fr 1fr;border-top:0.5px solid rgba(191,155,95,.2);}
+@media(max-width:768px){.story{grid-template-columns:1fr;}}
+.story-l{padding:60px 40px;}
+.story-r{background:var(--deep);padding:60px 40px;}
+.story-title{font-family:'Playfair Display',serif;font-size:38px;font-weight:700;line-height:1.2;color:var(--deep);margin-bottom:18px;}
+.story-title em{font-style:italic;color:var(--gold);}
+.story-p{font-size:13px;line-height:1.9;color:var(--soft);margin-bottom:28px;}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.stat{padding:18px;background:var(--warm);border-radius:12px;}
+.stat-n{font-family:'Playfair Display',serif;font-size:32px;color:var(--deep);}
+.stat-l{font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--soft);margin-top:4px;}
+.quote{font-family:'Playfair Display',serif;font-size:26px;font-style:italic;color:var(--cr);line-height:1.5;margin-bottom:28px;}
+.qmark{font-size:56px;color:var(--gold);line-height:.5;display:block;margin-bottom:14px;}
+.ingr{display:flex;flex-direction:column;gap:12px;}
+.ingr-row{display:flex;align-items:center;gap:12px;}
+.ingr-d{width:5px;height:5px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.ingr-t{font-size:12px;color:rgba(253,246,238,.75);}
+.bundle{padding:70px 40px;text-align:center;border-top:0.5px solid rgba(191,155,95,.2);}
+.bundle-box{background:var(--deep);border-radius:24px;padding:50px 40px;display:inline-flex;flex-direction:column;align-items:center;gap:24px;width:100%;max-width:680px;}
+.bundle-chars{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.bundle-char{width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;font-size:26px;border:0.5px solid rgba(191,155,95,.3);}
+.bundle-title{font-family:'Playfair Display',serif;font-size:32px;color:var(--cr);font-style:italic;}
+.bundle-sub{font-size:13px;color:rgba(253,246,238,.6);max-width:460px;line-height:1.8;text-align:center;}
+.bundle-price{font-family:'Playfair Display',serif;font-size:40px;color:var(--gold);}
+.bundle-price small{font-size:16px;color:rgba(253,246,238,.4);font-family:'Outfit',sans-serif;text-decoration:line-through;margin-right:10px;}
+.notify-form{display:flex;gap:0;width:100%;max-width:400px;}
+.notify-input{flex:1;padding:14px 18px;border:none;border-radius:2px 0 0 2px;font-family:'Outfit',sans-serif;font-size:13px;outline:none;background:rgba(255,255,255,.08);color:var(--cr);border:0.5px solid rgba(191,155,95,.4);border-right:none;}
+.notify-input::placeholder{color:rgba(253,246,238,.35);}
+.notify-btn{padding:14px 20px;background:var(--gold);color:var(--deep);border:none;border-radius:0 2px 2px 0;font-family:'Outfit',sans-serif;font-size:10px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-weight:500;transition:all .2s;white-space:nowrap;}
+.notify-btn:hover{background:var(--cr);}
+.bundle-note{font-size:10px;letter-spacing:1.5px;color:rgba(253,246,238,.35);text-transform:uppercase;}
+.notify-success{display:none;font-size:14px;color:#86EFAC;}
+footer{padding:48px 40px 28px;border-top:0.5px solid rgba(191,155,95,.3);display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;}
+@media(max-width:768px){footer{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){footer{grid-template-columns:1fr;}}
+.f-logo{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;letter-spacing:6px;color:var(--deep);margin-bottom:12px;}
+.f-tag{font-size:12px;color:var(--soft);line-height:1.9;max-width:200px;}
+.f-col h4{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;}
+.f-col ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.f-col a{font-size:12px;color:var(--soft);text-decoration:none;transition:color .2s;}
+.f-col a:hover{color:var(--deep);}
+.f-bottom{grid-column:1/-1;border-top:0.5px solid rgba(191,155,95,.2);padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+.f-copy{font-size:10px;color:var(--soft);letter-spacing:1px;}
+.fade-in{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+</style>
+</head>
+<body>
+<nav>
+  <div class="logo">CA<span>L</span>EO</div>
+  <ul class="nav-links">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#characters">Characters</a></li>
+    <li><a href="#story">Our Story</a></li>
+    <li><a href="#bundle">Bundle</a></li>
+  </ul>
+  <button class="shop-btn" onclick="document.getElementById('waitlist').scrollIntoView({behavior:'smooth'})">Join Waitlist</button>
+</nav>
+<section class="hero">
+  <div class="hero-eyebrow"><div class="hero-dot"></div>Pure · Natural · Baby Safe<div class="hero-dot"></div></div>
+  <h1 class="hero-h1">Warmth &amp;<br><em>care,</em> bottled<br>for your baby.</h1>
+  <p class="hero-p">Caleo is a baby skincare universe where every product has a character, every formula is 100% natural, and every bath is an adventure.</p>
+  <div class="hero-chars">
+    <div class="hc"><div class="hc-emoji">🦒</div><div class="hc-name">Zuri</div><div class="hc-prod">Lotion</div></div>
+    <div class="hc"><div class="hc-emoji">🦊</div><div class="hc-name">Finn</div><div class="hc-prod">Shower Gel</div></div>
+    <div class="hc"><div class="hc-emoji">🐥</div><div class="hc-name">Kiko</div><div class="hc-prod">Powder</div></div>
+    <div class="hc"><div class="hc-emoji">🐢</div><div class="hc-name">Milo</div><div class="hc-prod">Cream</div></div>
+    <div class="hc"><div class="hc-emoji">🦋</div><div class="hc-name">Nova</div><div class="hc-prod">Baby Oil</div></div>
+    <div class="hc"><div class="hc-emoji">🐼</div><div class="hc-name">Yuki</div><div class="hc-prod">Shampoo</div></div>
+    <div class="hc"><div class="hc-emoji">🐸</div><div class="hc-name">Lumi</div><div class="hc-prod">Rash Cream</div></div>
+    <div class="hc"><div class="hc-emoji">🐰</div><div class="hc-name">Buni</div><div class="hc-prod">Wipes</div></div>
+    <div class="hc"><div class="hc-emoji">🦭</div><div class="hc-name">Drops</div><div class="hc-prod">Detergent</div></div>
+  </div>
+  <div class="waitlist-box" id="waitlist">
+    <div class="waitlist-title">Be the first to know</div>
+    <div class="waitlist-sub">Join 500+ parents waiting for Caleo. Get early access, founding member discount &amp; first dibs on the complete family bundle.</div>
+    <div class="waitlist-form">
+      <input class="waitlist-input" type="email" id="hero-email" placeholder="Enter your email address"/>
+      <button class="waitlist-btn" onclick="joinWaitlist('hero-email','hero-success')">Join Waitlist</button>
+    </div>
+    <div class="success-msg" id="hero-success">🎉 You're on the list! We'll notify you at launch.</div>
+    <div class="waitlist-note">No spam. Unsubscribe anytime.</div>
+  </div>
+</section>
+<div class="trust">
+  <div class="trust-item"><div class="trust-icon">🌿</div><div class="trust-text">Paraben Free</div></div>
+  <div class="trust-item"><div class="trust-icon">🧪</div><div class="trust-text">Dermatologist Tested</div></div>
+  <div class="trust-item"><div class="trust-icon">💧</div><div class="trust-text">pH 5.5 Balanced</div></div>
+  <div class="trust-item"><div class="trust-icon">🐇</div><div class="trust-text">Cruelty Free</div></div>
+  <div class="trust-item"><div class="trust-icon">✅</div><div class="trust-text">ISO Certified</div></div>
+</div>
+<section class="products fade-in" id="products">
+  <div class="sec-hdr">
+    <div class="sec-eyebrow">Full Collection</div>
+    <h2 class="sec-title">Every essential, <em>one family</em></h2>
+    <p class="sec-sub">9 categories. 9 characters. All made with love.</p>
+  </div>
+  <div class="prod-grid">
+    <div class="prod-card"><div class="prod-top" style="background:#FDF5E0;"><div class="prod-emoji">🦒</div><span class="prod-badge">Bestseller</span></div><div class="prod-info"><div class="prod-char">Zuri the Giraffe</div><div class="prod-title">Daily Moisturising Lotion</div><div class="prod-desc">Aloe vera &amp; shea butter blend. Deep moisturisation for delicate skin.</div><div class="prod-footer"><div class="prod-price">₹349 <small>/ 200ml</small></div><span class="soon-btn">Coming Soon</span></div></div></div>
+    <div class="prod-card"><div class="prod-top" style="background:#FFF1F2;"><div class="prod-emoji">🦊</div><span class="prod-badge">New</span></div><div class="prod-info"><div class="prod-char">Finn the Fox</div><div class="prod-title">Gentle Shower Gel</div><div class="prod-desc">Tear-free &amp; sulphate-free. Makes bath time the best time.</div><div class="prod-footer"><div class="prod-price">₹299 <small>/ 200ml</small></div><span class="soon-btn">Coming Soon</span></div></div></div>
+    <div class="prod-card"><div class="prod-top" style="background:#FFFBEB;"><div class="prod-emoji">🐥</div></div><div class="prod-info"><div class="prod-char">Kiko the Chick</div><div class="prod-title">Soft Baby Powder</div><div class="prod-desc">Ultra-fine talc-free. All-day dryness &amp; rash prevention.</div><div class="prod-footer"><div class="prod-price">₹249 <small>/ 150g</small></div><span class="soon-btn">Coming Soon</span></div></div></div>
+    <div class="prod-card"><div class="prod-top" style="background:#F0FEF4;"><div class="prod-emoji">🐢</div></div><div class="prod-info"><div class="prod-char">Milo the Tortoise</div><div class="prod-title">Protective Baby Cream</div><div class="prod-desc">Locks in moisture with a light barrier for dry &amp; sensitive skin.</div><div class="prod-footer"><div class="prod-price">₹379 <small>/ 100g</small></div><span class="soon-btn">Coming Soon</span></div></div></div>
+    <div class="prod-card"><div class="prod-top" style="background:#F5F3FF;"><div class="prod-emoji">🦋</div><span class="prod-badge">Bestseller</span></div><div class="prod-info"><div class="prod-char">Nova the Butterfly</div><div class="prod-title">Natural Baby Massage Oil</div><div class="prod-desc">Cold-pressed oils blended for warm bonding massage.</div><div class="prod-footer"><div class="prod-price">₹399 <small>/ 100ml</small></div><span class="soon-btn">Coming Soon</span></div></div></div>
+    <div class="prod-card"><div class="prod-top" style="background:#EFF6FF;"><div class="prod-emoji">🐼</div></div><div class="prod-info"><div class="prod-char">Yuki the Panda</div><div class="prod-title">Tear-Free Baby Shampoo</div><div class="prod-desc">Cleanses gently without stinging — bath time fun, not fearful.</div><div class="prod-footer"><div class="prod-price">₹329 <small>/ 200ml</small></div><span class="soon-btn">Coming Soon</span></div></div></div>
+    <div class="prod-card"><div class="prod-top" style="background:#F0FEF4;"><div class="prod-emoji">🐸</div></div><div class="prod-info"><div class="prod-char">Lumi the Frog</div><div class="prod-title">Rash Relief Cream</div><div class="prod-desc">Zinc oxide + aloe. Soothes &amp; heals diaper rash fast.</div><div class="prod-footer"><div class="prod-price">₹279 <small>/ 75g</small></div><span class="soon-btn">Coming Soon</span></div></div></div>
+    <div class="prod-card"><div class="prod-top" style="background:#FFF3F3;"><div class="prod-emoji">🐰</div></div><div class="prod-info"><div class="prod-char">Buni the Bunny</div><div class="prod-title">Baby Wipes</div><div class="prod-desc">99% water, plant-based fabric. Ultra-soft, fragrance-free.</div><div class="prod-footer"><div class="prod-price">₹199 <small>/ 72 pcs</small></div><span class="soon-btn">Coming Soon</span></div></div></div>
+    <div class="prod-card"><div class="prod-top" style="background:#EEF8FF;"><div class="prod-emoji">🦭</div></div><div class="prod-info"><div class="prod-char">Drops the Seal</div><div class="prod-title">Baby Laundry Detergent</div><div class="prod-desc">Plant-enzyme formula. Removes stains, gentle on baby clothes.</div><div class="prod-footer"><div class="prod-price">₹449 <small>/ 1L</small></div><span class="soon-btn">Coming Soon</span></div></div></div>
+  </div>
+</section>
+<section class="story fade-in" id="story">
+  <div class="story-l">
+    <div class="sec-eyebrow" style="margin-bottom:12px;">Our Philosophy</div>
+    <h2 class="story-title">Every baby deserves the <em>softest</em> start.</h2>
+    <p class="story-p">At Caleo, we craft every formula from botanicals, cold-pressed oils, and ingredients you can actually pronounce. No fillers, no harsh chemicals — just warmth, bottled with love.</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-n">9</div><div class="stat-l">Characters</div></div>
+      <div class="stat"><div class="stat-n">100%</div><div class="stat-l">Natural Origin</div></div>
+      <div class="stat"><div class="stat-n">0</div><div class="stat-l">Harsh Chemicals</div></div>
+      <div class="stat"><div class="stat-n">pH 5.5</div><div class="stat-l">Skin Balanced</div></div>
+    </div>
+  </div>
+  <div class="story-r">
+    <span class="qmark">"</span>
+    <div class="quote">Gentle on skin,<br>rich in love —<br>the Caleo promise.</div>
+    <div class="ingr">
+      <div class="ingr-row"><div class="ingr-d"></div><div class="ingr-t">Aloe Vera — soothes &amp; hydrates deeply</div></div>
+      <div class="ingr-row"><div class="ingr-d"></div><div class="ingr-t">Shea Butter — locks in moisture</div></div>
+      <div class="ingr-row"><div class="ingr-d"></div><div class="ingr-t">Cold-pressed Coconut Oil — nourishes</div></div>
+      <div class="ingr-row"><div class="ingr-d"></div><div class="ingr-t">Chamomile Extract — calms redness</div></div>
+      <div class="ingr-row"><div class="ingr-d"></div><div class="ingr-t">Vitamin E — antioxidant protection</div></div>
+      <div class="ingr-row"><div class="ingr-d"></div><div class="ingr-t">Zinc Oxide — rash barrier &amp; healing</div></div>
+    </div>
+  </div>
+</section>
+<section class="bundle fade-in" id="bundle">
+  <div class="bundle-box">
+    <div class="bundle-chars">
+      <div class="bundle-char">🦒</div><div class="bundle-char">🦊</div><div class="bundle-char">🐥</div>
+      <div class="bundle-char">🐢</div><div class="bundle-char">🦋</div><div class="bundle-char">🐼</div>
+      <div class="bundle-char">🐸</div><div class="bundle-char">🐰</div><div class="bundle-char">🦭</div>
+    </div>
+    <div class="bundle-title">The Complete Caleo Family</div>
+    <div class="bundle-sub">All 9 products. All 9 characters. One complete baby skincare routine — from bath to bed.</div>
+    <div class="bundle-price"><small>₹2,999</small> ₹1,999</div>
+    <div class="notify-form">
+      <input class="notify-input" type="email" id="bundle-email" placeholder="your@email.com"/>
+      <button class="notify-btn" onclick="joinWaitlist('bundle-email','bundle-success')">Notify Me</button>
+    </div>
+    <div class="notify-success" id="bundle-success">🎉 Added to the founding members list!</div>
+    <div class="bundle-note">Launching Soon · Limited Founding Edition</div>
+  </div>
+</section>
+<footer>
+  <div>
+    <div class="f-logo">CALEO</div>
+    <div class="f-tag">Warmth &amp; care, bottled for your baby. Made with love, trusted by parents across India.</div>
+  </div>
+  <div class="f-col"><h4>Products</h4><ul><li><a href="#products">Zuri Lotion</a></li><li><a href="#products">Finn Shower Gel</a></li><li><a href="#products">Kiko Powder</a></li><li><a href="#products">Milo Cream</a></li><li><a href="#products">Nova Baby Oil</a></li><li><a href="#products">Yuki Shampoo</a></li><li><a href="#products">Lumi Rash Cream</a></li><li><a href="#products">Buni Wipes</a></li><li><a href="#products">Drops Detergent</a></li></ul></div>
+  <div class="f-col"><h4>Company</h4><ul><li><a href="#story">Our Story</a></li><li><a href="#products">Ingredients</a></li><li><a href="#">Characters</a></li><li><a href="#">Blog</a></li></ul></div>
+  <div class="f-col"><h4>Support</h4><ul><li><a href="#">Contact Us</a></li><li><a href="#">FAQ</a></li><li><a href="#">Returns</a></li><li><a href="#">Wholesale</a></li></ul></div>
+  <div class="f-bottom">
+    <div class="f-copy">© 2026 Caleo Baby Skincare · All rights reserved.</div>
+    <div class="f-copy">Warmth · Care · Love · India</div>
+  </div>
+</footer>
+<script>
+function joinWaitlist(inputId, successId) {
+  const email = document.getElementById(inputId).value;
+  if (!email || !email.includes('@')) { alert('Please enter a valid email address.'); return; }
+  document.getElementById(inputId).parentElement.style.display = 'none';
+  document.getElementById(successId).style.display = 'block';
+}
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
