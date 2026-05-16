@@ -44,7 +44,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 48px
 .nav-logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;letter-spacing:4px;color:var(--deep);cursor:pointer;}
 .nav-right{display:flex;gap:28px;align-items:center;}
 
-.hero{position:relative;width:100%;height:90vh;overflow:hidden;}
+.hero{position:relative;width:100%;height:100vh;overflow:hidden;}
 .hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#2C1F0E 0%,#4A3520 30%,#8B6A40 60%,#C4956A 100%);}
 .hero-svg{position:absolute;inset:0;width:100%;height:100%;}
 .hero-content{position:absolute;bottom:0;left:0;right:0;padding:56px 64px;background:linear-gradient(to top,rgba(26,18,8,0.88) 0%,transparent 100%);}
@@ -194,13 +194,13 @@ footer{background:var(--deep);padding:60px 48px 32px;border-top:0.5px solid rgba
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
-  <!-- Hero Video -->
-  <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;opacity:0.72;">
+  <!-- Hero Video Background -->
+  <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;">
     <source src="https://res.cloudinary.com/drimna23g/video/upload/v1778961392/bath_with_mom_rzk5aj.mp4" type="video/mp4"/>
   </video>
-  <!-- Dark overlay for text readability -->
-  <div style="position:absolute;inset:0;background:linear-gradient(160deg,rgba(26,18,8,0.55) 0%,rgba(42,28,14,0.3) 50%,rgba(26,18,8,0.7) 100%);z-index:1;"></div>
-  <svg class="hero-svg" style="z-index:2;opacity:0.15;" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice">
+  <!-- Overlay -->
+  <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(26,18,8,0.82) 0%,rgba(26,18,8,0.82) 40%,rgba(26,18,8,0.3) 70%,rgba(26,18,8,0.1) 100%);z-index:1;"></div>
+  <svg style="display:none;" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice">
     <defs>
       <radialGradient id="hg" cx="60%" cy="40%" r="70%">
         <stop offset="0%" stop-color="#C4956A"/>
@@ -279,7 +279,7 @@ footer{background:var(--deep);padding:60px 48px 32px;border-top:0.5px solid rgba
     <ellipse cx="876" cy="360" rx="180" ry="160" fill="rgba(232,192,144,0.05)"/>
     <text x="120" y="626" font-family="Georgia,serif" font-size="12" fill="rgba(245,240,232,0.3)" letter-spacing="3">NATURAL BABY SKINCARE — INDIA</text>
   </svg>
-  <div class="hero-content" style="z-index:3;position:relative;">
+  <div class="hero-content" style="z-index:3;position:absolute;">
     <div class="hero-eyebrow">Launching 2026 — India</div>
     <div class="hero-title">Crafted for the<br><em>gentlest skin</em><br>in the world.</div>
     <button class="hero-cta" onclick="document.getElementById('notable').scrollIntoView({behavior:'smooth'})">Discover Caleo &nbsp;→</button>
