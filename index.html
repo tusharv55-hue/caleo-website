@@ -93,7 +93,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4
 .all-card{background:#fff;border-radius:16px;padding:20px;display:flex;align-items:center;gap:16px;border:1px solid #eee;transition:all .25s;}
 .all-card:hover{transform:translateY(-4px);border-color:var(--pink);}
 .all-emoji{font-size:40px;width:64px;height:64px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.all-info{}
 .all-char{font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--pink);font-weight:700;margin-bottom:2px;}
 .all-name{font-family:'Nunito',sans-serif;font-size:15px;font-weight:800;color:var(--deep);margin-bottom:4px;}
 .all-price{font-size:14px;color:var(--soft);}
@@ -110,8 +109,12 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:16px 4
 .bundle-input::placeholder{color:rgba(255,255,255,0.35);}
 .bundle-btn{padding:14px 24px;background:var(--pink);color:#fff;border:none;border-radius:0 6px 6px 0;font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-weight:700;white-space:nowrap;transition:all .2s;}
 .bundle-btn:hover{background:var(--yellow);color:var(--deep);}
+.bundle-btn:disabled{background:#555;cursor:not-allowed;}
 .bundle-note{font-size:10px;letter-spacing:1.5px;color:rgba(255,255,255,0.3);text-transform:uppercase;}
-.success-msg{display:none;font-size:14px;color:#86EFAC;margin-top:12px;}
+.success-msg{display:none;font-size:16px;color:#86EFAC;margin:16px auto;max-width:440px;text-align:center;padding:16px;background:rgba(134,239,172,0.1);border-radius:8px;border:1px solid rgba(134,239,172,0.3);}
+.error-msg{display:none;font-size:13px;color:#FCA5A5;margin:8px auto;max-width:440px;text-align:center;}
+.counter{font-size:13px;color:rgba(255,255,255,0.4);margin-bottom:20px;letter-spacing:1px;}
+.counter span{color:var(--yellow);font-weight:700;}
 footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;}
 .f-logo{font-family:'Nunito',sans-serif;font-size:22px;font-weight:900;color:var(--deep);margin-bottom:12px;}
 .f-logo em{color:var(--pink);font-style:normal;}
@@ -122,6 +125,8 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
 .f-col a:hover{color:var(--deep);}
 .f-bottom{grid-column:1/-1;border-top:1px solid #eee;padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;}
 .f-copy{font-size:10px;color:#aaa;letter-spacing:1px;}
+.whatsapp-btn{position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;box-shadow:0 4px 20px rgba(37,211,102,0.4);cursor:pointer;z-index:999;text-decoration:none;transition:transform .2s;}
+.whatsapp-btn:hover{transform:scale(1.1);}
 @media(max-width:900px){
   .hero{grid-template-columns:1fr;}
   .hero-r{display:none;}
@@ -149,6 +154,9 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
 </head>
 <body>
 
+<!-- WhatsApp Button -->
+<a class="whatsapp-btn" href="https://wa.me/917000000000?text=Hi%20Caleo!%20I%20want%20to%20know%20more%20about%20your%20baby%20products." target="_blank" aria-label="WhatsApp">💬</a>
+
 <div class="top-bar">🎁 Free sample with every order — Launching soon in India!</div>
 
 <nav>
@@ -157,16 +165,14 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
     <li><a href="#products">Bestsellers</a></li>
     <li><a href="#all">All Products</a></li>
     <li><a href="#story">Our Story</a></li>
-    <li><a href="#bundle">Sets</a></li>
+    <li><a href="#bundle">Join Waitlist</a></li>
   </ul>
   <div class="nav-right">
     <button class="nav-icon" aria-label="Search">🔍</button>
-    <button class="nav-icon" aria-label="Account">👤</button>
     <button class="join-btn" onclick="document.getElementById('bundle').scrollIntoView({behavior:'smooth'})">Join Waitlist</button>
   </div>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-l">
     <div class="hero-new">✨ Launching 2026 — Join Waitlist</div>
@@ -201,7 +207,6 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
       <ellipse cx="209" cy="220" rx="10" ry="6" fill="#FFB5D0" opacity="0.5"/>
       <path d="M130 298 Q92 316 76 348 Q84 362 96 356 Q112 328 144 310Z" fill="#F5C5A3"/>
       <ellipse cx="76" cy="354" rx="15" ry="12" fill="#F5C5A3"/>
-      <!-- Zuri bottle -->
       <rect x="44" y="290" width="46" height="72" rx="11" fill="#FF8C42"/>
       <rect x="50" y="275" width="34" height="19" rx="7" fill="#E65C00"/>
       <rect x="47" y="304" width="40" height="50" rx="8" fill="white" opacity="0.93"/>
@@ -210,7 +215,6 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
       <text x="67" y="353" font-size="5.5" text-anchor="middle" fill="#E65C00" font-family="sans-serif">ZURI LOTION</text>
       <rect x="61" y="260" width="12" height="17" rx="4" fill="#E65C00"/>
       <ellipse cx="67" cy="259" rx="10" ry="5" fill="#FF8C42"/>
-      <!-- Finn bottle top right -->
       <rect x="300" y="155" width="40" height="62" rx="9" fill="#FF4D8D"/>
       <rect x="306" y="142" width="28" height="17" rx="6" fill="#C2185B"/>
       <rect x="303" y="168" width="34" height="42" rx="7" fill="white" opacity="0.92"/>
@@ -218,33 +222,28 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
       <text x="320" y="201" font-size="6" text-anchor="middle" font-weight="bold" fill="#C2185B" font-family="sans-serif">CALEO FINN</text>
       <text x="335" y="148" font-size="14">✨</text>
       <text x="282" y="166" font-size="11">⭐</text>
-      <!-- Yuki bottle top left -->
       <rect x="58" y="124" width="34" height="52" rx="8" fill="#5B8FE8"/>
       <rect x="63" y="112" width="24" height="15" rx="5" fill="#1565C0"/>
       <rect x="61" y="136" width="30" height="32" rx="6" fill="white" opacity="0.92"/>
       <text x="76" y="155" font-size="14" text-anchor="middle">🐼</text>
       <text x="76" y="165" font-size="5" text-anchor="middle" font-weight="bold" fill="#1565C0" font-family="sans-serif">YUKI</text>
       <text x="38" y="138" font-size="12">💫</text>
-      <!-- Nova bottle -->
       <rect x="310" y="290" width="36" height="80" rx="9" fill="#C084F5"/>
       <rect x="316" y="278" width="24" height="15" rx="5" fill="#7C3AED"/>
       <rect x="313" y="304" width="30" height="58" rx="7" fill="white" opacity="0.92"/>
       <text x="328" y="330" font-size="16" text-anchor="middle">🦋</text>
       <text x="328" y="342" font-size="5.5" text-anchor="middle" font-weight="bold" fill="#6A1B9A" font-family="sans-serif">NOVA OIL</text>
-      <!-- Natural badge -->
       <rect x="145" y="68" width="116" height="30" rx="15" fill="#F5E642"/>
       <text x="203" y="88" font-size="11" text-anchor="middle" font-weight="bold" fill="#1A1A2E" font-family="sans-serif">100% Natural ✓</text>
     </svg>
   </div>
 </section>
 
-<!-- TAGLINE -->
 <div class="tagline">
   <h2>Baby care, superpowered.™</h2>
   <p>A new standard of clean, natural baby skincare — trusted by parents, loved by babies, powered by 9 original characters.</p>
 </div>
 
-<!-- TRUST -->
 <div class="trust">
   <div class="trust-item"><span class="trust-icon">🌿</span><span class="trust-text">Paraben Free</span></div>
   <div class="trust-item"><span class="trust-icon">🧪</span><span class="trust-text">Derm Tested</span></div>
@@ -253,27 +252,16 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
   <div class="trust-item"><span class="trust-icon">✅</span><span class="trust-text">ISO Certified</span></div>
 </div>
 
-<!-- BESTSELLERS -->
 <section class="products" id="products">
   <div class="sec-top">
     <div class="sec-label">Bestsellers</div>
-    <div class="view-all" onclick="document.getElementById('all').scrollIntoView({behavior:'smooth'})">View All Products →</div>
+    <div class="view-all" onclick="document.getElementById('all').scrollIntoView({behavior:'smooth'})">View All →</div>
   </div>
   <div class="prod-grid">
     <div class="prod-card">
       <div class="prod-img" style="background:#FFF0E0;">
         <div class="badges"><span class="badge-r">Bestseller</span><span class="badge-w">Value Set</span></div>
-        <svg width="110" height="160" viewBox="0 0 110 160">
-          <rect x="28" y="38" width="54" height="104" rx="12" fill="#FF8C42"/>
-          <rect x="35" y="22" width="40" height="20" rx="8" fill="#E65C00"/>
-          <rect x="31" y="52" width="48" height="78" rx="9" fill="white" opacity="0.93"/>
-          <text x="55" y="90" font-size="30" text-anchor="middle">🦒</text>
-          <text x="55" y="110" font-size="8" text-anchor="middle" font-weight="bold" fill="#E65C00" font-family="sans-serif">CALEO</text>
-          <text x="55" y="121" font-size="6.5" text-anchor="middle" fill="#E65C00" font-family="sans-serif">Zuri Daily Lotion</text>
-          <text x="55" y="131" font-size="5.5" text-anchor="middle" fill="#bbb" font-family="sans-serif">200ml</text>
-          <rect x="48" y="8" width="14" height="17" rx="5" fill="#E65C00"/>
-          <ellipse cx="55" cy="7" rx="11" ry="5" fill="#FF8C42"/>
-        </svg>
+        <svg width="110" height="160" viewBox="0 0 110 160"><rect x="28" y="38" width="54" height="104" rx="12" fill="#FF8C42"/><rect x="35" y="22" width="40" height="20" rx="8" fill="#E65C00"/><rect x="31" y="52" width="48" height="78" rx="9" fill="white" opacity="0.93"/><text x="55" y="90" font-size="30" text-anchor="middle">🦒</text><text x="55" y="110" font-size="8" text-anchor="middle" font-weight="bold" fill="#E65C00" font-family="sans-serif">CALEO</text><text x="55" y="121" font-size="6.5" text-anchor="middle" fill="#E65C00" font-family="sans-serif">Zuri Daily Lotion</text><text x="55" y="131" font-size="5.5" text-anchor="middle" fill="#bbb" font-family="sans-serif">200ml</text><rect x="48" y="8" width="14" height="17" rx="5" fill="#E65C00"/><ellipse cx="55" cy="7" rx="11" ry="5" fill="#FF8C42"/></svg>
       </div>
       <div class="prod-info">
         <div class="prod-name">Zuri Daily Moisturising Lotion</div>
@@ -285,17 +273,7 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
     <div class="prod-card">
       <div class="prod-img" style="background:#FFE8F0;">
         <div class="badges"><span class="badge-r">Bestseller</span></div>
-        <svg width="110" height="160" viewBox="0 0 110 160">
-          <rect x="25" y="32" width="60" height="110" rx="14" fill="#FF4D8D"/>
-          <rect x="33" y="16" width="44" height="20" rx="8" fill="#C2185B"/>
-          <rect x="28" y="48" width="54" height="82" rx="11" fill="white" opacity="0.93"/>
-          <text x="55" y="90" font-size="32" text-anchor="middle">🦊</text>
-          <text x="55" y="112" font-size="8" text-anchor="middle" font-weight="bold" fill="#C2185B" font-family="sans-serif">CALEO</text>
-          <text x="55" y="123" font-size="6.5" text-anchor="middle" fill="#C2185B" font-family="sans-serif">Finn Shower Gel</text>
-          <text x="55" y="133" font-size="5.5" text-anchor="middle" fill="#bbb" font-family="sans-serif">200ml · Tear-Free</text>
-          <circle cx="55" cy="6" r="11" fill="#FF4D8D" opacity="0.4"/>
-          <circle cx="55" cy="6" r="7" fill="#C2185B"/>
-        </svg>
+        <svg width="110" height="160" viewBox="0 0 110 160"><rect x="25" y="32" width="60" height="110" rx="14" fill="#FF4D8D"/><rect x="33" y="16" width="44" height="20" rx="8" fill="#C2185B"/><rect x="28" y="48" width="54" height="82" rx="11" fill="white" opacity="0.93"/><text x="55" y="90" font-size="32" text-anchor="middle">🦊</text><text x="55" y="112" font-size="8" text-anchor="middle" font-weight="bold" fill="#C2185B" font-family="sans-serif">CALEO</text><text x="55" y="123" font-size="6.5" text-anchor="middle" fill="#C2185B" font-family="sans-serif">Finn Shower Gel</text><text x="55" y="133" font-size="5.5" text-anchor="middle" fill="#bbb" font-family="sans-serif">200ml · Tear-Free</text><circle cx="55" cy="6" r="11" fill="#FF4D8D" opacity="0.4"/><circle cx="55" cy="6" r="7" fill="#C2185B"/></svg>
       </div>
       <div class="prod-info">
         <div class="prod-name">Finn Gentle Shower Gel</div>
@@ -307,17 +285,7 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
     <div class="prod-card">
       <div class="prod-img" style="background:#E8F0FF;">
         <div class="badges"><span class="badge-r">Bestseller</span><span class="badge-w">Tear-Free</span></div>
-        <svg width="110" height="160" viewBox="0 0 110 160">
-          <rect x="22" y="35" width="66" height="108" rx="13" fill="#5B8FE8"/>
-          <rect x="30" y="18" width="50" height="22" rx="9" fill="#1565C0"/>
-          <rect x="26" y="50" width="58" height="80" rx="10" fill="white" opacity="0.93"/>
-          <text x="55" y="90" font-size="32" text-anchor="middle">🐼</text>
-          <text x="55" y="111" font-size="8" text-anchor="middle" font-weight="bold" fill="#1565C0" font-family="sans-serif">CALEO</text>
-          <text x="55" y="122" font-size="6.5" text-anchor="middle" fill="#1565C0" font-family="sans-serif">Yuki Baby Shampoo</text>
-          <text x="55" y="132" font-size="5.5" text-anchor="middle" fill="#bbb" font-family="sans-serif">200ml</text>
-          <rect x="44" y="5" width="22" height="16" rx="5" fill="#1565C0"/>
-          <ellipse cx="55" cy="4" rx="14" ry="6" fill="#5B8FE8"/>
-        </svg>
+        <svg width="110" height="160" viewBox="0 0 110 160"><rect x="22" y="35" width="66" height="108" rx="13" fill="#5B8FE8"/><rect x="30" y="18" width="50" height="22" rx="9" fill="#1565C0"/><rect x="26" y="50" width="58" height="80" rx="10" fill="white" opacity="0.93"/><text x="55" y="90" font-size="32" text-anchor="middle">🐼</text><text x="55" y="111" font-size="8" text-anchor="middle" font-weight="bold" fill="#1565C0" font-family="sans-serif">CALEO</text><text x="55" y="122" font-size="6.5" text-anchor="middle" fill="#1565C0" font-family="sans-serif">Yuki Baby Shampoo</text><text x="55" y="132" font-size="5.5" text-anchor="middle" fill="#bbb" font-family="sans-serif">200ml</text><rect x="44" y="5" width="22" height="16" rx="5" fill="#1565C0"/><ellipse cx="55" cy="4" rx="14" ry="6" fill="#5B8FE8"/></svg>
       </div>
       <div class="prod-info">
         <div class="prod-name">Yuki Tear-Free Baby Shampoo</div>
@@ -329,18 +297,7 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
     <div class="prod-card">
       <div class="prod-img" style="background:#F3E8FF;">
         <div class="badges"><span class="badge-r">Bestseller</span></div>
-        <svg width="110" height="160" viewBox="0 0 110 160">
-          <rect x="34" y="28" width="42" height="120" rx="11" fill="#C084F5"/>
-          <rect x="40" y="14" width="30" height="18" rx="7" fill="#7C3AED"/>
-          <ellipse cx="55" cy="13" rx="13" ry="7" fill="#A855F7"/>
-          <rect x="37" y="42" width="36" height="94" rx="9" fill="white" opacity="0.93"/>
-          <text x="55" y="88" font-size="28" text-anchor="middle">🦋</text>
-          <text x="55" y="108" font-size="8" text-anchor="middle" font-weight="bold" fill="#6A1B9A" font-family="sans-serif">CALEO</text>
-          <text x="55" y="119" font-size="6.5" text-anchor="middle" fill="#6A1B9A" font-family="sans-serif">Nova Baby Oil</text>
-          <text x="55" y="130" font-size="5.5" text-anchor="middle" fill="#bbb" font-family="sans-serif">100ml · Cold-Pressed</text>
-          <rect x="49" y="4" width="12" height="12" rx="4" fill="#7C3AED"/>
-          <ellipse cx="55" cy="3" rx="9" ry="5" fill="#C084F5"/>
-        </svg>
+        <svg width="110" height="160" viewBox="0 0 110 160"><rect x="34" y="28" width="42" height="120" rx="11" fill="#C084F5"/><rect x="40" y="14" width="30" height="18" rx="7" fill="#7C3AED"/><ellipse cx="55" cy="13" rx="13" ry="7" fill="#A855F7"/><rect x="37" y="42" width="36" height="94" rx="9" fill="white" opacity="0.93"/><text x="55" y="88" font-size="28" text-anchor="middle">🦋</text><text x="55" y="108" font-size="8" text-anchor="middle" font-weight="bold" fill="#6A1B9A" font-family="sans-serif">CALEO</text><text x="55" y="119" font-size="6.5" text-anchor="middle" fill="#6A1B9A" font-family="sans-serif">Nova Baby Oil</text><text x="55" y="130" font-size="5.5" text-anchor="middle" fill="#bbb" font-family="sans-serif">100ml · Cold-Pressed</text><rect x="49" y="4" width="12" height="12" rx="4" fill="#7C3AED"/><ellipse cx="55" cy="3" rx="9" ry="5" fill="#C084F5"/></svg>
       </div>
       <div class="prod-info">
         <div class="prod-name">Nova Natural Baby Massage Oil</div>
@@ -352,14 +309,12 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
   </div>
 </section>
 
-<!-- MODEL SCENE 1 -->
 <section class="model-section" id="story">
   <div class="model-l" style="background:#E8F5E9;">
     <svg viewBox="0 0 380 480" width="100%" height="480">
       <rect width="380" height="480" fill="#E8F5E9"/>
       <ellipse cx="190" cy="448" rx="150" ry="36" fill="#C8E6C9" opacity="0.5"/>
       <rect x="45" y="368" width="290" height="72" rx="20" fill="#A5D6A7" opacity="0.35"/>
-      <rect x="55" y="362" width="270" height="18" rx="8" fill="#81C784" opacity="0.45"/>
       <ellipse cx="190" cy="372" rx="133" ry="13" fill="#64B5F6" opacity="0.28"/>
       <ellipse cx="190" cy="348" rx="56" ry="36" fill="#F5C5A3"/>
       <ellipse cx="190" cy="300" rx="46" ry="48" fill="#F5C5A3"/>
@@ -385,8 +340,6 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
       <circle cx="130" cy="252" r="13" fill="white" opacity="0.6" stroke="#81D4FA" stroke-width="1.2"/>
       <circle cx="254" cy="242" r="10" fill="white" opacity="0.55" stroke="#81D4FA" stroke-width="1"/>
       <circle cx="284" cy="272" r="7" fill="white" opacity="0.5" stroke="#81D4FA" stroke-width="1"/>
-      <circle cx="106" cy="232" r="8" fill="white" opacity="0.45" stroke="#81D4FA" stroke-width="1"/>
-      <circle cx="318" cy="254" r="11" fill="white" opacity="0.5" stroke="#81D4FA" stroke-width="1"/>
       <ellipse cx="177" cy="268" rx="17" ry="13" fill="white" opacity="0.88"/>
       <ellipse cx="201" cy="264" rx="14" ry="11" fill="white" opacity="0.82"/>
       <ellipse cx="190" cy="260" rx="15" ry="12" fill="white" opacity="0.9"/>
@@ -402,7 +355,6 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
   </div>
 </section>
 
-<!-- MODEL SCENE 2 -->
 <section class="model-section2">
   <div class="ms2-l">
     <div class="ms2-eyebrow">Everyday must-haves.</div>
@@ -430,9 +382,6 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
       <ellipse cx="225" cy="422" rx="40" ry="20" fill="#FFFDE7" opacity="0.58"/>
       <path d="M284 344 Q316 322 336 300 Q325 284 312 290 Q294 314 270 342Z" fill="#E8B896"/>
       <ellipse cx="336" cy="294" rx="23" ry="17" fill="#E8B896"/>
-      <path d="M322 282 Q327 266 334 263 Q340 267 336 278" stroke="#E8B896" stroke-width="9" fill="none" stroke-linecap="round"/>
-      <path d="M330 279 Q337 263 344 262 Q350 267 345 278" stroke="#E8B896" stroke-width="8" fill="none" stroke-linecap="round"/>
-      <path d="M338 280 Q346 266 352 268 Q356 275 350 284" stroke="#E8B896" stroke-width="7" fill="none" stroke-linecap="round"/>
       <rect x="44" y="276" width="42" height="64" rx="11" fill="#FF8C42"/>
       <rect x="52" y="261" width="26" height="18" rx="7" fill="#E65C00"/>
       <rect x="48" y="290" width="34" height="44" rx="8" fill="white" opacity="0.93"/>
@@ -441,14 +390,12 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
       <text x="65" y="334" font-size="5" text-anchor="middle" fill="#bbb" font-family="sans-serif">Daily Lotion</text>
       <text x="100" y="270" font-size="16">✨</text>
       <text x="292" y="355" font-size="14">💫</text>
-      <text x="50" y="250" font-size="12">⭐</text>
       <rect x="98" y="158" width="184" height="38" rx="19" fill="#FF8C42"/>
       <text x="190" y="182" font-size="12" text-anchor="middle" fill="white" font-weight="bold" font-family="sans-serif">Soft skin, happy baby 🌿</text>
     </svg>
   </div>
 </section>
 
-<!-- INGREDIENTS -->
 <section class="ingr-section">
   <div class="ingr-inner">
     <div class="ingr-l">
@@ -472,39 +419,37 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
   </div>
 </section>
 
-<!-- ALL PRODUCTS -->
 <section class="all-products" id="all">
-  <div class="sec-top">
-    <div class="sec-label">All 9 Characters & Products</div>
-  </div>
+  <div class="sec-top"><div class="sec-label">All 9 Characters & Products</div></div>
   <div class="all-grid">
-    <div class="all-card"><div class="all-emoji" style="background:#FFF0E0;">🦒</div><div class="all-info"><div class="all-char">Zuri the Giraffe</div><div class="all-name">Daily Moisturising Lotion</div><div class="all-price">₹349 / 200ml · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
-    <div class="all-card"><div class="all-emoji" style="background:#FFE8F0;">🦊</div><div class="all-info"><div class="all-char">Finn the Fox</div><div class="all-name">Gentle Shower Gel</div><div class="all-price">₹299 / 200ml · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
-    <div class="all-card"><div class="all-emoji" style="background:#FFFDE7;">🐥</div><div class="all-info"><div class="all-char">Kiko the Chick</div><div class="all-name">Soft Baby Powder</div><div class="all-price">₹249 / 150g · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
-    <div class="all-card"><div class="all-emoji" style="background:#F0FEF4;">🐢</div><div class="all-info"><div class="all-char">Milo the Tortoise</div><div class="all-name">Protective Baby Cream</div><div class="all-price">₹379 / 100g · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
-    <div class="all-card"><div class="all-emoji" style="background:#F3E8FF;">🦋</div><div class="all-info"><div class="all-char">Nova the Butterfly</div><div class="all-name">Natural Baby Massage Oil</div><div class="all-price">₹399 / 100ml · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
-    <div class="all-card"><div class="all-emoji" style="background:#E8F0FF;">🐼</div><div class="all-info"><div class="all-char">Yuki the Panda</div><div class="all-name">Tear-Free Baby Shampoo</div><div class="all-price">₹329 / 200ml · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
-    <div class="all-card"><div class="all-emoji" style="background:#F0FEF4;">🐸</div><div class="all-info"><div class="all-char">Lumi the Frog</div><div class="all-name">Rash Relief Cream</div><div class="all-price">₹279 / 75g · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
-    <div class="all-card"><div class="all-emoji" style="background:#FFF3F3;">🐰</div><div class="all-info"><div class="all-char">Buni the Bunny</div><div class="all-name">Baby Wipes</div><div class="all-price">₹199 / 72 pcs · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
-    <div class="all-card"><div class="all-emoji" style="background:#EEF8FF;">🦭</div><div class="all-info"><div class="all-char">Drops the Seal</div><div class="all-name">Baby Laundry Detergent</div><div class="all-price">₹449 / 1L · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
+    <div class="all-card"><div class="all-emoji" style="background:#FFF0E0;">🦒</div><div><div class="all-char">Zuri the Giraffe</div><div class="all-name">Daily Moisturising Lotion</div><div class="all-price">₹349 / 200ml · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
+    <div class="all-card"><div class="all-emoji" style="background:#FFE8F0;">🦊</div><div><div class="all-char">Finn the Fox</div><div class="all-name">Gentle Shower Gel</div><div class="all-price">₹299 / 200ml · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
+    <div class="all-card"><div class="all-emoji" style="background:#FFFDE7;">🐥</div><div><div class="all-char">Kiko the Chick</div><div class="all-name">Soft Baby Powder</div><div class="all-price">₹249 / 150g · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
+    <div class="all-card"><div class="all-emoji" style="background:#F0FEF4;">🐢</div><div><div class="all-char">Milo the Tortoise</div><div class="all-name">Protective Baby Cream</div><div class="all-price">₹379 / 100g · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
+    <div class="all-card"><div class="all-emoji" style="background:#F3E8FF;">🦋</div><div><div class="all-char">Nova the Butterfly</div><div class="all-name">Natural Baby Massage Oil</div><div class="all-price">₹399 / 100ml · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
+    <div class="all-card"><div class="all-emoji" style="background:#E8F0FF;">🐼</div><div><div class="all-char">Yuki the Panda</div><div class="all-name">Tear-Free Baby Shampoo</div><div class="all-price">₹329 / 200ml · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
+    <div class="all-card"><div class="all-emoji" style="background:#F0FEF4;">🐸</div><div><div class="all-char">Lumi the Frog</div><div class="all-name">Rash Relief Cream</div><div class="all-price">₹279 / 75g · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
+    <div class="all-card"><div class="all-emoji" style="background:#FFF3F3;">🐰</div><div><div class="all-char">Buni the Bunny</div><div class="all-name">Baby Wipes</div><div class="all-price">₹199 / 72 pcs · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
+    <div class="all-card"><div class="all-emoji" style="background:#EEF8FF;">🦭</div><div><div class="all-char">Drops the Seal</div><div class="all-name">Baby Laundry Detergent</div><div class="all-price">₹449 / 1L · <span style="color:#FF4D8D;font-weight:700;">Coming Soon</span></div></div></div>
   </div>
 </section>
 
-<!-- WAITLIST/BUNDLE -->
 <section class="bundle" id="bundle">
   <div class="bundle-chars">
     <div class="bundle-char">🦒</div><div class="bundle-char">🦊</div><div class="bundle-char">🐥</div>
     <div class="bundle-char">🐢</div><div class="bundle-char">🦋</div><div class="bundle-char">🐼</div>
     <div class="bundle-char">🐸</div><div class="bundle-char">🐰</div><div class="bundle-char">🦭</div>
   </div>
+  <div class="counter">Already <span id="wl-count">500+</span> parents waiting!</div>
   <h2 class="bundle-h2">Be the <em>first</em> to know.</h2>
-  <p class="bundle-p">Join 500+ parents on the Caleo waitlist. Get early access + founding member discount + free sample with your first order.</p>
+  <p class="bundle-p">Join parents on the Caleo waitlist. Get early access + founding member discount + free sample with your first order.</p>
   <div class="bundle-price"><small>₹2,999</small>₹1,999</div>
-  <div class="bundle-form">
+  <div class="bundle-form" id="wl-form">
     <input class="bundle-input" type="email" id="wl-email" placeholder="Enter your email address"/>
-    <button class="bundle-btn" onclick="joinWaitlist()">Join Waitlist</button>
+    <button class="bundle-btn" id="wl-btn" onclick="joinWaitlist()">Join Waitlist</button>
   </div>
   <div class="success-msg" id="wl-success">🎉 You're on the list! We'll notify you at launch.</div>
+  <div class="error-msg" id="wl-error">Something went wrong. Please try again.</div>
   <div class="bundle-note">No spam · Unsubscribe anytime · Launching 2026</div>
 </section>
 
@@ -523,13 +468,60 @@ footer{background:#fff;padding:48px 40px 28px;border-top:1px solid #eee;display:
 </footer>
 
 <script>
-function joinWaitlist(){
-  var email=document.getElementById('wl-email').value;
-  if(!email||!email.includes('@')){alert('Please enter a valid email address.');return;}
-  document.querySelector('.bundle-form').style.display='none';
-  document.getElementById('wl-success').style.display='block';
+const SUPABASE_URL = 'https://rhggxbnolyhtbduvdrsh.supabase.co';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJoZ2d4Ym5vbHlodGJkdXZkcnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NTMyMjUsImV4cCI6MjA5NDMyOTIyNX0.mgpPjnLmOInCE78vxorUNKiI0K0czJpDTchRd12E29k';
+
+async function joinWaitlist() {
+  const email = document.getElementById('wl-email').value.trim();
+  const btn = document.getElementById('wl-btn');
+  const errorEl = document.getElementById('wl-error');
+
+  if (!email || !email.includes('@')) {
+    errorEl.textContent = 'Please enter a valid email address.';
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Joining...';
+  errorEl.style.display = 'none';
+
+  try {
+    const res = await fetch(`${SUPABASE_URL}/rest/v1/waitlist`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_KEY,
+        'Authorization': `Bearer ${SUPABASE_KEY}`,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({ email: email, source: 'website' })
+    });
+
+    if (res.ok || res.status === 201) {
+      document.getElementById('wl-form').style.display = 'none';
+      document.getElementById('wl-success').style.display = 'block';
+      const count = document.getElementById('wl-count');
+      if (count) count.textContent = (parseInt(count.textContent) + 1) + '+';
+    } else if (res.status === 409) {
+      errorEl.textContent = 'This email is already on the waitlist!';
+      errorEl.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Join Waitlist';
+    } else {
+      throw new Error('Server error');
+    }
+  } catch (e) {
+    errorEl.textContent = 'Something went wrong. Please try again.';
+    errorEl.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Join Waitlist';
+  }
 }
-const observer=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting)e.target.style.opacity='1';});},{threshold:0.1});
+
+document.getElementById('wl-email').addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') joinWaitlist();
+});
 </script>
 </body>
 </html>
