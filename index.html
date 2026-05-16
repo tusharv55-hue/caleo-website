@@ -170,6 +170,30 @@ footer{background:var(--deep);padding:60px 48px 32px;border-top:0.5px solid rgba
   .all-grid{grid-template-columns:1fr;}
   .footer-top{grid-template-columns:1fr;}
 }
+
+/* POPUP */
+.popup-overlay{position:fixed;inset:0;background:rgba(26,18,8,0.6);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+.popup-box{background:var(--offwhite);max-width:520px;width:100%;padding:56px 52px;position:relative;animation:popIn .4s ease;}
+@keyframes popIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.popup-close{position:absolute;top:20px;right:20px;background:none;border:none;font-size:22px;cursor:pointer;color:var(--mid);line-height:1;padding:4px;transition:color .2s;}
+.popup-close:hover{color:var(--deep);}
+.popup-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--soft);margin-bottom:20px;}
+.popup-title{font-family:'Cormorant Garamond',serif;font-size:34px;font-weight:300;color:var(--deep);line-height:1.2;margin-bottom:16px;}
+.popup-body{font-size:13px;color:var(--soft);line-height:1.9;margin-bottom:28px;font-weight:300;}
+.popup-body ul{list-style:none;padding:0;margin-top:10px;}
+.popup-body ul li{padding:6px 0;border-bottom:0.5px solid var(--line);font-size:12px;color:var(--soft);}
+.popup-body ul li:before{content:"· ";color:var(--gold);}
+.popup-form{display:flex;flex-direction:column;gap:12px;margin-bottom:16px;}
+.popup-input{padding:14px 18px;background:transparent;border:0.5px solid var(--line);font-family:'Jost',sans-serif;font-size:13px;color:var(--deep);outline:none;transition:border-color .2s;}
+.popup-input:focus{border-color:var(--amber);}
+.popup-input::placeholder{color:var(--soft);}
+.popup-btn{padding:15px;background:var(--deep);color:var(--cream);border:none;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;font-weight:500;}
+.popup-btn:hover{background:var(--gold);}
+.popup-btn:disabled{background:var(--soft);cursor:not-allowed;}
+.popup-note{font-size:10px;letter-spacing:1.5px;color:var(--soft);text-align:center;text-transform:uppercase;}
+.popup-success{display:none;text-align:center;padding:20px 0;}
+.popup-success-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--deep);margin-bottom:10px;}
+.popup-success-body{font-size:13px;color:var(--soft);line-height:1.8;font-style:italic;}
 </style>
 </head>
 <body>
@@ -654,5 +678,113 @@ document.getElementById('wl-email').addEventListener('keypress',e=>{if(e.key==='
   v.controls = false;
 })();
 </script>
+
+<!-- POPUP -->
+<div class="popup-overlay" id="caleo-popup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closePopup()" aria-label="Close">×</button>
+    
+    <div id="popup-form-section">
+      <div class="popup-eyebrow">Welcome to Caleo</div>
+      <div class="popup-title">It seems like<br>you are in India.</div>
+      <div class="popup-body">
+        You are among the first to discover Caleo — India's most anticipated natural baby skincare brand. Before we launch, please note:
+        <ul>
+          <li>Prices shown in Indian Rupees (₹)</li>
+          <li>Free sample with every founding order</li>
+          <li>Launching exclusively in India — 2026</li>
+        </ul>
+      </div>
+      <div class="popup-form">
+        <input class="popup-input" type="email" id="popup-email" placeholder="Enter your email to join waitlist"/>
+        <button class="popup-btn" id="popup-btn" onclick="popupJoin()">Join the Waitlist →</button>
+      </div>
+      <div class="popup-note" id="popup-error"></div>
+      <div class="popup-note">No spam · Unsubscribe anytime</div>
+    </div>
+
+    <div class="popup-success" id="popup-success">
+      <div class="popup-success-title">You have been added.</div>
+      <div class="popup-success-body">Thank you for your interest in Caleo.<br>We will write to you before anyone else.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Show popup after 2 seconds
+setTimeout(function(){
+  var popup = document.getElementById('caleo-popup');
+  if(popup && !localStorage.getItem('caleo_popup_seen')){
+    popup.style.display = 'flex';
+  }
+}, 2000);
+
+function closePopup(){
+  document.getElementById('caleo-popup').style.display = 'none';
+  localStorage.setItem('caleo_popup_seen', '1');
+}
+
+// Close on overlay click
+document.getElementById('caleo-popup').addEventListener('click', function(e){
+  if(e.target === this) closePopup();
+});
+
+async function popupJoin(){
+  const email = document.getElementById('popup-email').value.trim();
+  const btn = document.getElementById('popup-btn');
+  const err = document.getElementById('popup-error');
+  
+  if(!email || !email.includes('@')){
+    err.textContent = 'Please enter a valid email address.';
+    err.style.color = '#C27A5A';
+    return;
+  }
+  
+  btn.disabled = true;
+  btn.textContent = 'Registering...';
+  err.textContent = '';
+  
+  const SB_URL = 'https://rhggxbnolyhtbduvdrsh.supabase.co';
+  const SB_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJoZ2d4Ym5vbHlodGJkdXZkcnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NTMyMjUsImV4cCI6MjA5NDMyOTIyNX0.mgpPjnLmOInCE78vxorUNKiI0K0czJpDTchRd12E29k';
+  
+  try {
+    const res = await fetch(`${SB_URL}/rest/v1/waitlist`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SB_KEY,
+        'Authorization': 'Bearer ' + SB_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({email: email, source: 'popup'})
+    });
+    
+    if(res.ok || res.status === 201){
+      document.getElementById('popup-form-section').style.display = 'none';
+      document.getElementById('popup-success').style.display = 'block';
+      localStorage.setItem('caleo_popup_seen', '1');
+      setTimeout(closePopup, 3000);
+    } else if(res.status === 409){
+      err.textContent = 'This address is already registered.';
+      err.style.color = '#C27A5A';
+      btn.disabled = false;
+      btn.textContent = 'Join the Waitlist →';
+    } else {
+      throw new Error();
+    }
+  } catch(e) {
+    err.textContent = 'Something went wrong. Please try again.';
+    err.style.color = '#C27A5A';
+    btn.disabled = false;
+    btn.textContent = 'Join the Waitlist →';
+  }
+}
+
+// Enter key support
+document.getElementById('popup-email').addEventListener('keypress', function(e){
+  if(e.key === 'Enter') popupJoin();
+});
+</script>
+
 </body>
 </html>
