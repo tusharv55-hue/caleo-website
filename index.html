@@ -1,639 +1,412 @@
+<!-- =========================
+CALEO — CINEMATIC HERO UPGRADE
+Paste this in place of your current HERO section
+========================= -->
+
+<section class="hero">
+
+  <!-- CINEMATIC VIDEO -->
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="videos/caleo-hero.mp4" type="video/mp4">
+  </video>
+
+  <!-- OVERLAY -->
+  <div class="hero-overlay"></div>
+
+  <!-- LIGHT GLOW -->
+  <div class="hero-glow"></div>
+
+  <!-- CONTENT -->
+  <div class="hero-content fade-up">
+
+    <div class="hero-eyebrow">
+      Launching 2026 — India
+    </div>
+
+    <h1 class="hero-title">
+      Crafted for the<br>
+      <em>gentlest skin</em><br>
+      in the world.
+    </h1>
+
+    <p class="hero-sub">
+      Botanical baby care made with warmth,
+      ritual and uncompromising safety.
+    </p>
+
+    <a href="#waitlist" class="hero-cta">
+      Discover Caleo
+      <span class="hero-cta-arrow">→</span>
+    </a>
+
+  </div>
+
+  <!-- SCROLL INDICATOR -->
+  <div class="hero-scroll">
+    <span></span>
+  </div>
+
+</section>
+
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;}
-:root{
-  --cream:#F5F0E8;--offwhite:#FAF8F4;--deep:#1A1208;
-  --amber:#8B5E2A;--mid:#6B5040;--soft:#9A8870;
-  --line:rgba(139,94,42,0.18);--gold:#B8873A;
+
+/* =========================
+CINEMATIC HERO
+========================= */
+
+.hero{
+  position:relative;
+  width:100%;
+  height:100vh;
+  overflow:hidden;
+  background:#000;
 }
-body{font-family:'Jost',sans-serif;background:var(--cream);color:var(--deep);overflow-x:hidden;}
 
-/* TOP BAR */
-.top-bar{background:var(--deep);color:rgba(245,240,232,0.7);font-size:11px;letter-spacing:2px;text-align:center;padding:10px;text-transform:uppercase;}
-.top-bar a{color:var(--gold);text-decoration:underline;cursor:pointer;}
+/* VIDEO */
 
-/* NAV */
-nav{display:flex;align-items:center;justify-content:space-between;padding:0 48px;height:64px;background:var(--cream);border-bottom:0.5px solid var(--line);position:sticky;top:0;z-index:100;}
-.nav-left{display:flex;gap:36px;}
-.nav-left a,.nav-right a{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--mid);text-decoration:none;transition:color .2s;font-weight:400;}
-.nav-left a:hover,.nav-right a:hover{color:var(--deep);}
-.nav-logo{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;letter-spacing:4px;color:var(--deep);cursor:pointer;}
-.nav-right{display:flex;gap:28px;align-items:center;}
-.nav-icon{background:none;border:none;color:var(--mid);cursor:pointer;font-size:16px;}
+.hero-video{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
 
-/* HERO — Full bleed cinematic */
-.hero{position:relative;width:100%;height:90vh;overflow:hidden;background:var(--deep);}
-.hero-scene{width:100%;height:100%;display:flex;align-items:flex-end;justify-content:center;}
-.hero-bg{position:absolute;inset:0;background:linear-gradient(160deg,#2C1F0E 0%,#4A3520 30%,#8B6A40 60%,#C4956A 100%);}
+  filter:
+    brightness(.72)
+    saturate(.9)
+    contrast(1.02);
 
-<!-- Illustrated hero scene — mother & baby -->
-.hero-svg{position:absolute;inset:0;width:100%;height:100%;}
-.hero-content{position:absolute;bottom:0;left:0;right:0;padding:48px 64px;background:linear-gradient(to top,rgba(26,18,8,0.85) 0%,transparent 100%);}
-.hero-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,232,0.6);margin-bottom:14px;}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:56px;font-weight:300;color:var(--cream);line-height:1.1;margin-bottom:20px;max-width:600px;}
-.hero-title em{font-style:italic;}
-.hero-cta{display:inline-flex;align-items:center;gap:10px;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--cream);border:0.5px solid rgba(245,240,232,0.4);padding:12px 28px;cursor:pointer;transition:all .25s;background:transparent;}
-.hero-cta:hover{background:rgba(245,240,232,0.1);}
-.hero-cta-arrow{font-size:16px;}
+  transform:scale(1.04);
+}
 
-/* NEW & NOTABLE */
-.notable{padding:72px 48px;background:var(--offwhite);}
-.section-header{text-align:center;margin-bottom:48px;}
-.section-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--soft);margin-bottom:12px;}
-.section-title{font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:300;color:var(--deep);}
-.section-sub{font-size:13px;color:var(--soft);max-width:540px;margin:12px auto 0;line-height:1.8;font-weight:300;}
+/* OVERLAY */
 
-.products-row{display:flex;gap:1px;background:var(--line);}
-.prod-item{flex:1;background:var(--offwhite);padding:0;transition:all .3s;cursor:pointer;}
-.prod-item:hover .prod-img-wrap{transform:scale(1.02);}
-.prod-img-area{height:340px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:var(--cream);position:relative;}
-.prod-img-wrap{transition:transform .5s ease;display:flex;align-items:center;justify-content:center;width:100%;height:100%;}
-.prod-label{position:absolute;top:14px;left:14px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);}
-.prod-details{padding:24px 20px 28px;}
-.prod-name-big{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;color:var(--deep);margin-bottom:6px;}
-.prod-desc-short{font-size:12px;color:var(--soft);line-height:1.7;margin-bottom:14px;font-weight:300;}
-.prod-size{font-size:11px;color:var(--soft);margin-bottom:4px;letter-spacing:.5px;}
-.prod-price-big{font-size:18px;color:var(--deep);font-weight:400;margin-bottom:16px;}
-.add-cart-btn{width:100%;padding:14px;background:var(--deep);color:var(--cream);border:none;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-family:'Jost',sans-serif;transition:all .2s;}
-.add-cart-btn:hover{background:var(--amber);}
-.soon-btn-a{width:100%;padding:14px;background:transparent;color:var(--mid);border:0.5px solid var(--line);font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:default;font-family:'Jost',sans-serif;}
+.hero-overlay{
+  position:absolute;
+  inset:0;
 
-/* SPLIT SECTION */
-.split{display:grid;grid-template-columns:1fr 1fr;min-height:520px;border-top:0.5px solid var(--line);}
-.split-img{overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.split-img svg,.split-img-r svg{width:100%;height:100%;}
-.split-txt{padding:72px 56px;display:flex;flex-direction:column;justify-content:center;}
-.split-txt-r{padding:72px 56px;display:flex;flex-direction:column;justify-content:center;background:var(--deep);}
-.split-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:var(--soft);margin-bottom:20px;}
-.split-eyebrow-r{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,232,0.4);margin-bottom:20px;}
-.split-title{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:var(--deep);line-height:1.2;margin-bottom:20px;}
-.split-title em{font-style:italic;color:var(--amber);}
-.split-title-r{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:300;color:var(--cream);line-height:1.2;margin-bottom:20px;}
-.split-title-r em{font-style:italic;color:var(--gold);}
-.split-body{font-size:13px;color:var(--soft);line-height:1.9;margin-bottom:28px;font-weight:300;max-width:360px;}
-.split-body-r{font-size:13px;color:rgba(245,240,232,0.6);line-height:1.9;margin-bottom:28px;font-weight:300;max-width:360px;}
-.split-link{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--deep);display:inline-flex;align-items:center;gap:8px;border-bottom:0.5px solid var(--deep);padding-bottom:2px;cursor:pointer;transition:all .2s;}
-.split-link-r{font-size:11px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);display:inline-flex;align-items:center;gap:8px;border-bottom:0.5px solid var(--gold);padding-bottom:2px;cursor:pointer;}
+  background:
+    linear-gradient(
+      to top,
+      rgba(10,7,5,.88) 0%,
+      rgba(10,7,5,.45) 30%,
+      rgba(10,7,5,.18) 60%,
+      rgba(10,7,5,.08) 100%
+    );
 
-/* CATEGORY BROWSE */
-.browse{padding:72px 48px;background:var(--cream);border-top:0.5px solid var(--line);}
-.cat-scroll{display:flex;gap:16px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none;}
-.cat-scroll::-webkit-scrollbar{display:none;}
-.cat-item{flex-shrink:0;width:200px;cursor:pointer;}
-.cat-img{width:200px;height:240px;object-fit:cover;display:flex;align-items:center;justify-content:center;background:var(--offwhite);border:0.5px solid var(--line);transition:all .3s;overflow:hidden;}
-.cat-img:hover{border-color:var(--amber);}
-.cat-name{font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--mid);margin-top:12px;font-weight:400;}
+  z-index:2;
+}
 
-/* STORE SECTION */
-.store{display:grid;grid-template-columns:1fr 1fr;min-height:480px;border-top:0.5px solid var(--line);}
-.store-img{overflow:hidden;display:flex;align-items:center;justify-content:center;background:#2A2018;}
-.store-txt{padding:72px 56px;display:flex;flex-direction:column;justify-content:center;background:var(--offwhite);}
+/* SOFT GLOW */
 
-/* READING */
-.reading{padding:72px 48px;background:var(--offwhite);border-top:0.5px solid var(--line);}
-.reading-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px;}
-.read-item{cursor:pointer;}
-.read-img{width:100%;height:200px;object-fit:cover;display:flex;align-items:center;justify-content:center;margin-bottom:20px;overflow:hidden;}
-.read-category{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);margin-bottom:8px;}
-.read-title{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:300;color:var(--deep);margin-bottom:8px;line-height:1.3;}
-.read-meta{font-size:11px;color:var(--soft);letter-spacing:1px;}
+.hero-glow{
+  position:absolute;
+  width:700px;
+  height:700px;
 
-/* WAITLIST */
-.waitlist-sec{padding:88px 48px;text-align:center;background:var(--deep);border-top:0.5px solid var(--line);}
-.wl-eyebrow{font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,232,0.4);margin-bottom:20px;}
-.wl-title{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:var(--cream);margin-bottom:16px;line-height:1.1;}
-.wl-title em{font-style:italic;color:var(--gold);}
-.wl-sub{font-size:13px;color:rgba(245,240,232,0.5);max-width:440px;margin:0 auto 40px;line-height:1.9;font-weight:300;}
-.wl-form{display:flex;max-width:480px;margin:0 auto 16px;}
-.wl-input{flex:1;padding:14px 20px;background:rgba(245,240,232,0.05);border:0.5px solid rgba(245,240,232,0.2);border-right:none;color:var(--cream);font-family:'Jost',sans-serif;font-size:13px;outline:none;letter-spacing:.5px;}
-.wl-input::placeholder{color:rgba(245,240,232,0.25);}
-.wl-btn{padding:14px 28px;background:var(--gold);color:var(--deep);border:none;font-family:'Jost',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;cursor:pointer;font-weight:500;transition:all .2s;white-space:nowrap;}
-.wl-btn:hover{background:var(--cream);}
-.wl-note{font-size:10px;letter-spacing:2px;color:rgba(245,240,232,0.2);text-transform:uppercase;}
-.wl-success{display:none;font-size:14px;color:#A8D8A8;margin-top:16px;}
+  top:50%;
+  left:55%;
 
-/* FOOTER */
-footer{background:var(--deep);padding:56px 48px 32px;border-top:0.5px solid rgba(245,240,232,0.08);}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
-.footer-logo{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;letter-spacing:4px;color:var(--cream);margin-bottom:16px;}
-.footer-tagline{font-size:12px;color:rgba(245,240,232,0.4);line-height:1.9;max-width:200px;font-weight:300;}
-.footer-col h4{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:rgba(245,240,232,0.35);margin-bottom:18px;}
-.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:12px;}
-.footer-col a{font-size:12px;color:rgba(245,240,232,0.55);text-decoration:none;transition:color .2s;font-weight:300;}
-.footer-col a:hover{color:var(--cream);}
-.footer-bottom{border-top:0.5px solid rgba(245,240,232,0.08);padding-top:24px;display:flex;justify-content:space-between;}
-.footer-copy{font-size:11px;color:rgba(245,240,232,0.25);letter-spacing:1px;}
+  transform:translate(-50%,-50%);
 
-.wa-float{position:fixed;bottom:24px;right:24px;width:52px;height:52px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:24px;box-shadow:0 4px 20px rgba(37,211,102,0.35);cursor:pointer;z-index:999;text-decoration:none;transition:transform .2s;}
-.wa-float:hover{transform:scale(1.1);}
+  background:
+    radial-gradient(
+      circle,
+      rgba(212,164,106,.22) 0%,
+      rgba(212,164,106,.08) 40%,
+      transparent 70%
+    );
+
+  z-index:2;
+}
+
+/* CONTENT */
+
+.hero-content{
+  position:absolute;
+  bottom:90px;
+  left:64px;
+  z-index:5;
+  max-width:620px;
+}
+
+/* EYEBROW */
+
+.hero-eyebrow{
+  font-size:11px;
+  letter-spacing:3px;
+  text-transform:uppercase;
+
+  color:rgba(245,240,232,.62);
+
+  margin-bottom:18px;
+
+  font-family:'Jost',sans-serif;
+}
+
+/* TITLE */
+
+.hero-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:72px;
+  line-height:1.02;
+  font-weight:300;
+
+  color:#F5F0E8;
+
+  margin-bottom:24px;
+}
+
+.hero-title em{
+  font-style:italic;
+  color:#D7B17B;
+}
+
+/* SUBTEXT */
+
+.hero-sub{
+  font-family:'Jost',sans-serif;
+  font-size:15px;
+  line-height:1.9;
+
+  color:rgba(245,240,232,.72);
+
+  max-width:500px;
+
+  margin-bottom:36px;
+
+  font-weight:300;
+}
+
+/* CTA */
+
+.hero-cta{
+  display:inline-flex;
+  align-items:center;
+  gap:12px;
+
+  padding:15px 34px;
+
+  border:
+    1px solid rgba(245,240,232,.24);
+
+  text-decoration:none;
+
+  color:#F5F0E8;
+
+  font-size:11px;
+  letter-spacing:2px;
+  text-transform:uppercase;
+
+  font-family:'Jost',sans-serif;
+
+  backdrop-filter:blur(10px);
+
+  transition:
+    background .35s ease,
+    transform .35s ease,
+    border-color .35s ease;
+}
+
+.hero-cta:hover{
+  background:rgba(245,240,232,.08);
+
+  transform:translateY(-2px);
+
+  border-color:
+    rgba(245,240,232,.4);
+}
+
+.hero-cta-arrow{
+  font-size:16px;
+}
+
+/* SCROLL INDICATOR */
+
+.hero-scroll{
+  position:absolute;
+  left:50%;
+  bottom:24px;
+
+  transform:translateX(-50%);
+
+  z-index:5;
+}
+
+.hero-scroll span{
+  display:block;
+
+  width:1px;
+  height:60px;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(245,240,232,.6),
+      transparent
+    );
+
+  animation:scrollLine 2s infinite;
+}
+
+@keyframes scrollLine{
+
+  0%{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+
+  50%{
+    opacity:1;
+  }
+
+  100%{
+    opacity:0;
+    transform:translateY(10px);
+  }
+}
+
+/* =========================
+SCROLL ANIMATION
+========================= */
+
+.fade-up{
+  opacity:0;
+  transform:translateY(40px);
+
+  transition:
+    opacity 1.2s ease,
+    transform 1.2s ease;
+}
+
+.fade-up.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* =========================
+PRODUCT HOVER
+========================= */
+
+.prod-item{
+  transition:
+    transform .5s ease,
+    box-shadow .5s ease;
+}
+
+.prod-item:hover{
+  transform:translateY(-10px);
+
+  box-shadow:
+    0 20px 50px rgba(0,0,0,.08);
+}
+
+/* =========================
+IMAGE ZOOM
+========================= */
+
+.prod-img-wrap img,
+.cat-img img,
+.read-img img{
+  transition:
+    transform 1.2s ease;
+}
+
+.prod-item:hover img,
+.cat-item:hover img,
+.read-item:hover img{
+  transform:scale(1.06);
+}
+
+/* =========================
+SMOOTH SCROLL
+========================= */
+
+html{
+  scroll-behavior:smooth;
+}
+
+/* =========================
+MOBILE
+========================= */
+
+@media(max-width:768px){
+
+  .hero{
+    height:100svh;
+  }
+
+  .hero-content{
+    left:28px;
+    right:28px;
+    bottom:56px;
+  }
+
+  .hero-title{
+    font-size:48px;
+  }
+
+  .hero-sub{
+    font-size:14px;
+    line-height:1.8;
+  }
+
+  .hero-cta{
+    width:100%;
+    justify-content:center;
+  }
+
+  .hero-glow{
+    width:420px;
+    height:420px;
+  }
+
+}
+
 </style>
 
-<div>
-<a class="wa-float" href="https://wa.me/917000000000" target="_blank" aria-label="WhatsApp">💬</a>
-
-<!-- TOP BAR -->
-<div class="top-bar">Complimentary sample with every order — <a>Join the waitlist</a></div>
-
-<!-- NAV -->
-<nav>
-  <div class="nav-left">
-    <a href="#notable">New & Notable</a>
-    <a href="#browse">Products</a>
-    <a href="#story">Our Story</a>
-  </div>
-  <div class="nav-logo">Caleo.</div>
-  <div class="nav-right">
-    <a href="#reading">Journal</a>
-    <a href="#waitlist">Waitlist</a>
-    <button class="nav-icon" aria-label="Search">⌕</button>
-  </div>
-</nav>
-
-<!-- HERO — Cinematic full bleed -->
-<section class="hero">
-  <div class="hero-bg"></div>
-  <svg class="hero-svg" viewBox="0 0 1440 700" preserveAspectRatio="xMidYMid slice">
-    <!-- Warm gradient background -->
-    <defs>
-      <radialGradient id="heroGrad" cx="60%" cy="40%" r="70%">
-        <stop offset="0%" stop-color="#C4956A"/>
-        <stop offset="40%" stop-color="#7A5030"/>
-        <stop offset="100%" stop-color="#1A1208"/>
-      </radialGradient>
-      <radialGradient id="glow" cx="50%" cy="50%" r="50%">
-        <stop offset="0%" stop-color="#E8C090" stop-opacity=".3"/>
-        <stop offset="100%" stop-color="#E8C090" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
-    <rect width="1440" height="700" fill="url(#heroGrad)"/>
-    <ellipse cx="860" cy="300" rx="300" ry="300" fill="url(#glow)"/>
-
-    <!-- Elegant mother silhouette -->
-    <!-- Body -->
-    <path d="M820 680 Q800 580 790 480 Q785 420 810 370 Q830 320 850 300 Q870 280 900 290 Q930 300 940 340 Q955 390 950 450 Q940 540 920 680Z" fill="#3A2510" opacity=".9"/>
-    <!-- Head -->
-    <ellipse cx="875" cy="260" rx="42" ry="48" fill="#C8956A"/>
-    <!-- Hair elegant updo -->
-    <ellipse cx="875" cy="228" rx="40" ry="24" fill="#2C1A08"/>
-    <path d="M835 240 Q830 210 845 195 Q860 182 875 180 Q890 182 905 195 Q920 210 915 240" fill="#2C1A08"/>
-    <!-- Elegant chignon -->
-    <ellipse cx="893" cy="198" rx="18" ry="14" fill="#2C1A08"/>
-    <!-- Face -->
-    <ellipse cx="866" cy="258" rx="6" ry="7" fill="white" opacity=".9"/>
-    <ellipse cx="884" cy="258" rx="6" ry="7" fill="white" opacity=".9"/>
-    <ellipse cx="867" cy="259" rx="4" ry="4.5" fill="#1C0A00"/>
-    <ellipse cx="885" cy="259" rx="4" ry="4.5" fill="#1C0A00"/>
-    <path d="M862 270 Q875 277 888 270" stroke="#8B5020" stroke-width="1.8" fill="none" stroke-linecap="round"/>
-    <!-- Neck -->
-    <rect x="868" y="298" width="20" height="28" rx="10" fill="#C8956A"/>
-    <!-- Arms -->
-    <path d="M790 380 Q760 370 740 350 Q730 338 738 326 Q748 316 762 326 Q778 340 800 355Z" fill="#C8956A"/>
-    <path d="M950 370 Q980 360 1000 345 Q1012 332 1004 320 Q994 310 980 320 Q964 334 942 350Z" fill="#C8956A"/>
-
-    <!-- Baby being held — precious small figure -->
-    <ellipse cx="875" cy="420" rx="55" ry="40" fill="#E8B896" opacity=".9"/>
-    <!-- Baby head -->
-    <ellipse cx="875" cy="390" rx="28" ry="30" fill="#E8C09A"/>
-    <!-- Baby hair wisps -->
-    <path d="M858 368 Q865 360 875 358 Q885 360 892 368" stroke="#8B6040" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <!-- Baby face -->
-    <ellipse cx="869" cy="388" rx="4" ry="4.5" fill="white" opacity=".9"/>
-    <ellipse cx="881" cy="388" rx="4" ry="4.5" fill="white" opacity=".9"/>
-    <ellipse cx="870" cy="389" rx="2.5" ry="3" fill="#2C1A08"/>
-    <ellipse cx="882" cy="389" rx="2.5" ry="3" fill="#2C1A08"/>
-    <path d="M870 397 Q875 401 880 397" stroke="#C27A5A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-    <!-- Blush -->
-    <ellipse cx="864" cy="393" rx="6" ry="3.5" fill="#FFB5A0" opacity=".4"/>
-    <ellipse cx="886" cy="393" rx="6" ry="3.5" fill="#FFB5A0" opacity=".4"/>
-
-    <!-- Caleo bottle in mother's hand -->
-    <rect x="728" y="308" width="36" height="60" rx="9" fill="#8B5E2A"/>
-    <rect x="734" y="296" width="24" height="16" rx="6" fill="#6B4518"/>
-    <rect x="731" y="320" width="30" height="42" rx="7" fill="#FAF8F4" opacity=".92"/>
-    <text x="746" y="342" font-size="12" text-anchor="middle">🦒</text>
-    <text x="746" y="353" font-size="5" text-anchor="middle" font-weight="bold" fill="#6B4518" font-family="sans-serif">CALEO</text>
-    <text x="746" y="360" font-size="4" text-anchor="middle" fill="#8B5E2A" font-family="sans-serif">ZURI LOTION</text>
-
-    <!-- Soft light rays -->
-    <ellipse cx="875" cy="340" rx="200" ry="180" fill="rgba(232,192,144,0.06)"/>
-
-    <!-- Floating botanical elements -->
-    <path d="M300 200 Q310 150 340 180 Q320 200 300 200Z" fill="#6B8040" opacity=".3"/>
-    <path d="M280 220 Q260 170 290 160 Q285 190 280 220Z" fill="#6B8040" opacity=".25"/>
-    <path d="M320 240 Q340 200 360 220 Q340 240 320 240Z" fill="#8B9850" opacity=".2"/>
-    <path d="M1100 150 Q1120 100 1150 130 Q1130 150 1100 150Z" fill="#6B8040" opacity=".3"/>
-    <path d="M1080 170 Q1060 120 1090 110 Q1085 140 1080 170Z" fill="#6B8040" opacity=".25"/>
-
-    <!-- Tagline bottom left -->
-    <text x="120" y="620" font-family="serif" font-size="13" fill="rgba(245,240,232,0.45)" letter-spacing="2">NATURAL BABY SKINCARE</text>
-  </svg>
-
-  <div class="hero-content">
-    <div class="hero-eyebrow">Launching 2026 — India</div>
-    <div class="hero-title">Crafted for the<br><em>gentlest skin</em><br>in the world.</div>
-    <div class="hero-cta">Discover Caleo <span class="hero-cta-arrow">→</span></div>
-  </div>
-</section>
-
-<!-- NEW & NOTABLE -->
-<section class="notable" id="notable">
-  <div class="section-header">
-    <div class="section-eyebrow">New & Notable</div>
-    <div class="section-title">Introducing the Caleo family</div>
-    <div class="section-sub">Nine meticulously formulated products, each guided by an original character — assembled with care for your baby's most delicate skin.</div>
-  </div>
-
-  <div class="products-row">
-    <!-- Zuri -->
-    <div class="prod-item">
-      <div class="prod-img-area" style="background:#F0EAE0;">
-        <span class="prod-label">New addition</span>
-        <div class="prod-img-wrap">
-          <svg width="140" height="260" viewBox="0 0 140 260">
-            <rect x="42" y="48" width="56" height="168" rx="12" fill="#8B5E2A"/>
-            <rect x="50" y="30" width="40" height="24" rx="8" fill="#6B4518"/>
-            <ellipse cx="70" cy="29" rx="18" ry="8" fill="#A87840"/>
-            <rect x="46" y="65" width="48" height="136" rx="9" fill="#FAF8F4" opacity=".95"/>
-            <text x="70" y="120" font-size="32" text-anchor="middle">🦒</text>
-            <text x="70" y="148" font-size="9" text-anchor="middle" font-weight="500" fill="#6B4518" font-family="sans-serif">Caleo.</text>
-            <text x="70" y="162" font-size="7" text-anchor="middle" fill="#8B5E2A" font-family="sans-serif">Zuri Daily Lotion</text>
-            <text x="70" y="174" font-size="6" text-anchor="middle" fill="#aaa" font-family="sans-serif">200 ml</text>
-            <rect x="61" y="12" width="18" height="20" rx="5" fill="#6B4518"/>
-            <ellipse cx="70" cy="11" rx="13" ry="6" fill="#8B5E2A"/>
-          </svg>
-        </div>
-      </div>
-      <div class="prod-details">
-        <div class="prod-name-big">Zuri Daily Moisturising Lotion</div>
-        <div class="prod-desc-short">Aloe vera, shea butter and chamomile — assembled to deeply nourish the most delicate skin.</div>
-        <div class="prod-size">One size · 200 ml</div>
-        <div class="prod-price-big">₹349</div>
-        <div class="soon-btn-a">Coming Soon</div>
-      </div>
-    </div>
-
-    <!-- Nova -->
-    <div class="prod-item">
-      <div class="prod-img-area" style="background:#ECEAE6;">
-        <span class="prod-label">Bestseller</span>
-        <div class="prod-img-wrap">
-          <svg width="140" height="260" viewBox="0 0 140 260">
-            <rect x="48" y="38" width="44" height="180" rx="10" fill="#5A6B40"/>
-            <rect x="54" y="20" width="32" height="22" rx="7" fill="#3A4B28"/>
-            <ellipse cx="70" cy="19" rx="15" ry="7" fill="#7A8F55"/>
-            <rect x="51" y="55" width="38" height="148" rx="8" fill="#FAF8F4" opacity=".95"/>
-            <text x="70" y="120" font-size="28" text-anchor="middle">🦋</text>
-            <text x="70" y="148" font-size="9" text-anchor="middle" font-weight="500" fill="#3A4B28" font-family="sans-serif">Caleo.</text>
-            <text x="70" y="162" font-size="6.5" text-anchor="middle" fill="#5A6B40" font-family="sans-serif">Nova Baby Oil</text>
-            <text x="70" y="174" font-size="6" text-anchor="middle" fill="#aaa" font-family="sans-serif">100 ml · Cold-Pressed</text>
-            <rect x="62" y="8" width="16" height="14" rx="4" fill="#3A4B28"/>
-            <ellipse cx="70" cy="7" rx="11" ry="5" fill="#5A6B40"/>
-          </svg>
-        </div>
-      </div>
-      <div class="prod-details">
-        <div class="prod-name-big">Nova Natural Baby Massage Oil</div>
-        <div class="prod-desc-short">Cold-pressed coconut, sweet almond and jojoba — a golden blend for warm, bonding massage.</div>
-        <div class="prod-size">One size · 100 ml</div>
-        <div class="prod-price-big">₹399</div>
-        <div class="soon-btn-a">Coming Soon</div>
-      </div>
-    </div>
-
-    <!-- Yuki -->
-    <div class="prod-item">
-      <div class="prod-img-area" style="background:#E8ECEE;">
-        <div class="prod-img-wrap">
-          <svg width="140" height="260" viewBox="0 0 140 260">
-            <rect x="34" y="42" width="72" height="172" rx="13" fill="#4A6880"/>
-            <rect x="44" y="22" width="52" height="26" rx="9" fill="#2E4A60"/>
-            <ellipse cx="70" cy="21" rx="22" ry="9" fill="#6A8EA8"/>
-            <rect x="38" y="60" width="64" height="140" rx="10" fill="#FAF8F4" opacity=".95"/>
-            <text x="70" y="120" font-size="32" text-anchor="middle">🐼</text>
-            <text x="70" y="148" font-size="9" text-anchor="middle" font-weight="500" fill="#2E4A60" font-family="sans-serif">Caleo.</text>
-            <text x="70" y="162" font-size="6.5" text-anchor="middle" fill="#4A6880" font-family="sans-serif">Yuki Baby Shampoo</text>
-            <text x="70" y="174" font-size="6" text-anchor="middle" fill="#aaa" font-family="sans-serif">200 ml · Tear-Free</text>
-            <rect x="60" y="8" width="20" height="18" rx="5" fill="#2E4A60"/>
-            <ellipse cx="70" cy="7" rx="15" ry="6" fill="#4A6880"/>
-          </svg>
-        </div>
-      </div>
-      <div class="prod-details">
-        <div class="prod-name-big">Yuki Tear-Free Baby Shampoo</div>
-        <div class="prod-desc-short">A sulphate-free, pH-balanced formula — cleanses gently without ever compromising the eyes.</div>
-        <div class="prod-size">One size · 200 ml</div>
-        <div class="prod-price-big">₹329</div>
-        <div class="soon-btn-a">Coming Soon</div>
-      </div>
-    </div>
-
-    <!-- Milo -->
-    <div class="prod-item">
-      <div class="prod-img-area" style="background:#E8EDE8;">
-        <div class="prod-img-wrap">
-          <svg width="140" height="260" viewBox="0 0 140 260">
-            <rect x="44" y="45" width="52" height="160" rx="11" fill="#4A6B40"/>
-            <rect x="50" y="28" width="40" height="22" rx="8" fill="#2E4B28"/>
-            <ellipse cx="70" cy="27" rx="17" ry="8" fill="#6A8B60"/>
-            <rect x="48" y="62" width="44" height="128" rx="9" fill="#FAF8F4" opacity=".95"/>
-            <text x="70" y="118" font-size="28" text-anchor="middle">🐢</text>
-            <text x="70" y="144" font-size="9" text-anchor="middle" font-weight="500" fill="#2E4B28" font-family="sans-serif">Caleo.</text>
-            <text x="70" y="158" font-size="6.5" text-anchor="middle" fill="#4A6B40" font-family="sans-serif">Milo Protective Cream</text>
-            <text x="70" y="170" font-size="6" text-anchor="middle" fill="#aaa" font-family="sans-serif">100 g</text>
-            <rect x="61" y="12" width="18" height="18" rx="5" fill="#2E4B28"/>
-            <ellipse cx="70" cy="11" rx="13" ry="5" fill="#4A6B40"/>
-          </svg>
-        </div>
-      </div>
-      <div class="prod-details">
-        <div class="prod-name-big">Milo Protective Baby Cream</div>
-        <div class="prod-desc-short">A light yet nourishing barrier cream — formulated to protect and restore sensitive baby skin.</div>
-        <div class="prod-size">One size · 100 g</div>
-        <div class="prod-price-big">₹379</div>
-        <div class="soon-btn-a">Coming Soon</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SPLIT 1 — Bath scene + story -->
-<section class="split" id="story">
-  <div class="split-img" style="background:#2A1E12;">
-    <svg viewBox="0 0 720 520" width="100%" height="520">
-      <defs>
-        <radialGradient id="bathGrad" cx="50%" cy="40%" r="60%">
-          <stop offset="0%" stop-color="#5A3A20"/>
-          <stop offset="100%" stop-color="#1A0E06"/>
-        </radialGradient>
-      </defs>
-      <rect width="720" height="520" fill="url(#bathGrad)"/>
-      <!-- Bath steam/mist effect -->
-      <ellipse cx="360" cy="200" rx="200" ry="100" fill="rgba(232,192,144,0.06)"/>
-      <ellipse cx="360" cy="300" rx="280" ry="140" fill="rgba(232,192,144,0.04)"/>
-      <!-- Bathtub suggestion -->
-      <rect x="120" y="380" width="480" height="80" rx="24" fill="#3A2810" opacity=".7"/>
-      <rect x="110" y="372" width="500" height="24" rx="10" fill="#4A3418" opacity=".6"/>
-      <!-- Water shimmer -->
-      <ellipse cx="360" cy="388" rx="230" ry="18" fill="#6090A0" opacity=".2"/>
-      <!-- Baby in bath - sweet illustration -->
-      <ellipse cx="360" cy="358" rx="72" ry="44" fill="#E8B896" opacity=".9"/>
-      <ellipse cx="360" cy="308" rx="54" ry="58" fill="#E8C09A"/>
-      <!-- Baby hair little wisps -->
-      <path d="M326 282 Q340 268 360 265 Q380 268 394 282" stroke="#8B6040" stroke-width="4" fill="none" stroke-linecap="round"/>
-      <!-- Baby face joyful -->
-      <ellipse cx="345" cy="306" rx="8" ry="9" fill="white" opacity=".92"/>
-      <ellipse cx="375" cy="306" rx="8" ry="9" fill="white" opacity=".92"/>
-      <ellipse cx="346" cy="307" rx="5.5" ry="6" fill="#2C1A08"/>
-      <ellipse cx="376" cy="307" rx="5.5" ry="6" fill="#2C1A08"/>
-      <circle cx="348" cy="305" r="2" fill="white"/>
-      <circle cx="378" cy="305" r="2" fill="white"/>
-      <path d="M348 322 Q360 332 372 322" stroke="#C27A5A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-      <!-- Blush -->
-      <ellipse cx="334" cy="316" rx="10" ry="6" fill="#FFB5A0" opacity=".35"/>
-      <ellipse cx="386" cy="316" rx="10" ry="6" fill="#FFB5A0" opacity=".35"/>
-      <!-- Arms up splashing -->
-      <path d="M308 345 Q280 325 265 305 Q278 292 290 300 Q308 320 318 340Z" fill="#E8C09A"/>
-      <path d="M412 345 Q440 325 455 305 Q442 292 430 300 Q412 320 402 340Z" fill="#E8C09A"/>
-      <!-- Finn bottle -->
-      <rect x="238" y="278" width="32" height="50" rx="8" fill="#6B5040"/>
-      <rect x="244" y="266" width="20" height="16" rx="5" fill="#4A3428"/>
-      <rect x="241" y="290" width="26" height="32" rx="6" fill="#FAF8F4" opacity=".92"/>
-      <text x="254" y="308" font-size="13" text-anchor="middle">🦊</text>
-      <text x="254" y="316" font-size="4.5" text-anchor="middle" fill="#4A3428" font-weight="bold" font-family="sans-serif">CALEO FINN</text>
-      <!-- Soap bubbles elegant -->
-      <circle cx="310" cy="270" r="16" fill="none" stroke="rgba(200,180,160,0.3)" stroke-width="1"/>
-      <circle cx="420" cy="260" r="11" fill="none" stroke="rgba(200,180,160,0.25)" stroke-width="1"/>
-      <circle cx="450" cy="290" r="8" fill="none" stroke="rgba(200,180,160,0.2)" stroke-width="1"/>
-      <circle cx="285" cy="255" r="9" fill="none" stroke="rgba(200,180,160,0.2)" stroke-width="1"/>
-      <!-- Shampoo foam on head -->
-      <ellipse cx="348" cy="278" rx="20" ry="15" fill="white" opacity=".75"/>
-      <ellipse cx="372" cy="274" rx="16" ry="13" fill="white" opacity=".7"/>
-      <ellipse cx="360" cy="268" rx="18" ry="14" fill="white" opacity=".8"/>
-      <!-- Caleo text elegant -->
-      <text x="360" y="460" font-family="serif" font-size="14" fill="rgba(245,240,232,0.35)" text-anchor="middle" letter-spacing="3" font-style="italic">the bath ritual</text>
-    </svg>
-  </div>
-  <div class="split-txt">
-    <div class="split-eyebrow">Our philosophy</div>
-    <div class="split-title">Every bath,<br>an <em>act of love.</em></div>
-    <div class="split-body">We believe that the rituals of early childhood — the bath, the massage, the bedtime — are among the most profound moments of connection. Caleo exists to make each one worthy of the trust parents place in it.</div>
-    <a class="split-link">Read more →</a>
-  </div>
-</section>
-
-<!-- SPLIT 2 — Lotion application + ingredients -->
-<section class="split" style="grid-template-columns:1fr 1fr;">
-  <div class="split-txt-r">
-    <div class="split-eyebrow-r">Ingredient standards</div>
-    <div class="split-title-r">Assembled<br>with <em>precision.</em></div>
-    <div class="split-body-r">Each Caleo formula is built from botanicals, cold-pressed oils and actives that meet the most stringent safety standards. We exclude over 2,000 questionable ingredients — not because we must, but because your baby deserves nothing less.</div>
-    <a class="split-link-r">Our ingredients →</a>
-  </div>
-  <div class="split-img" style="background:#F0EAE0;">
-    <svg viewBox="0 0 720 520" width="100%" height="520">
-      <rect width="720" height="520" fill="#F0EAE0"/>
-      <!-- Elegant hands applying product - artistic -->
-      <defs>
-        <radialGradient id="handGrad" cx="50%" cy="60%" r="50%">
-          <stop offset="0%" stop-color="#E8C09A"/>
-          <stop offset="100%" stop-color="#C8906A"/>
-        </radialGradient>
-      </defs>
-      <!-- Background texture suggestion -->
-      <ellipse cx="360" cy="260" rx="280" ry="200" fill="rgba(200,160,100,0.08)"/>
-      <!-- Parent hand large artistic -->
-      <path d="M150 480 Q180 380 220 310 Q250 260 290 240 Q320 228 340 240 Q360 255 355 290 Q348 330 330 370 Q310 420 290 480Z" fill="url(#handGrad)" opacity=".9"/>
-      <!-- Fingers suggestion -->
-      <path d="M290 240 Q300 200 310 185 Q322 175 332 185 Q340 198 335 220" stroke="#C8906A" stroke-width="22" fill="none" stroke-linecap="round"/>
-      <path d="M320 235 Q335 195 348 182 Q360 172 370 184 Q378 198 370 220" stroke="#C8906A" stroke-width="20" fill="none" stroke-linecap="round"/>
-      <path d="M348 238 Q368 202 382 192 Q394 184 402 198 Q408 214 398 235" stroke="#C8906A" stroke-width="18" fill="none" stroke-linecap="round"/>
-      <!-- Baby arm small -->
-      <path d="M420 340 Q500 300 560 290 Q590 285 595 305 Q598 325 570 335 Q520 350 450 370 Q435 375 420 365Z" fill="#E8C9A0" opacity=".85"/>
-      <!-- Lotion cream texture on skin -->
-      <path d="M480 310 Q510 305 540 312 Q535 325 510 326 Q488 324 480 310Z" fill="white" opacity=".5"/>
-      <!-- Zuri bottle lying on its side artistic -->
-      <rect x="520" y="395" width="120" height="50" rx="12" fill="#8B5E2A" transform="rotate(-15, 580, 420)"/>
-      <rect x="528" y="400" width="104" height="36" rx="8" fill="#FAF8F4" opacity=".92" transform="rotate(-15, 580, 420)"/>
-      <text x="572" y="425" font-size="18" text-anchor="middle" transform="rotate(-15, 572, 425)">🦒</text>
-      <text x="594" y="423" font-size="7" text-anchor="middle" fill="#6B4518" font-weight="bold" font-family="sans-serif" transform="rotate(-15, 594, 423)">CALEO ZURI</text>
-      <!-- Botanical leaf suggestions -->
-      <path d="M80 120 Q100 80 130 100 Q110 120 80 120Z" fill="#6B8040" opacity=".4"/>
-      <path d="M60 140 Q40 100 70 90 Q65 118 60 140Z" fill="#6B8040" opacity=".35"/>
-      <path d="M620 100 Q640 60 670 80 Q650 100 620 100Z" fill="#6B8040" opacity=".35"/>
-      <text x="360" y="480" font-family="serif" font-size="14" fill="rgba(107,64,24,0.3)" text-anchor="middle" letter-spacing="3" font-style="italic">the morning ritual</text>
-    </svg>
-  </div>
-</section>
-
-<!-- BROWSE BY CATEGORY -->
-<section class="browse" id="browse">
-  <div class="section-header" style="text-align:left;margin-bottom:32px;">
-    <div class="section-eyebrow">Browse by category</div>
-  </div>
-  <div class="cat-scroll">
-    <div class="cat-item">
-      <div class="cat-img" style="background:#F0EAE0;flex-direction:column;gap:8px;">
-        <svg width="80" height="120" viewBox="0 0 80 120"><rect x="22" y="18" width="36" height="84" rx="8" fill="#8B5E2A"/><rect x="28" y="8" width="24" height="14" rx="5" fill="#6B4518"/><rect x="24" y="30" width="32" height="64" rx="6" fill="#FAF8F4" opacity=".93"/><text x="40" y="62" font-size="20" text-anchor="middle">🦒</text><text x="40" y="75" font-size="5.5" text-anchor="middle" fill="#6B4518" font-family="sans-serif" font-weight="bold">ZURI LOTION</text></svg>
-      </div>
-      <div class="cat-name">Moisturising</div>
-    </div>
-    <div class="cat-item">
-      <div class="cat-img" style="background:#ECEAE6;flex-direction:column;gap:8px;">
-        <svg width="80" height="120" viewBox="0 0 80 120"><rect x="18" y="15" width="44" height="90" rx="10" fill="#4A6880"/><rect x="26" y="5" width="28" height="14" rx="5" fill="#2E4A60"/><rect x="21" y="28" width="38" height="70" rx="8" fill="#FAF8F4" opacity=".93"/><text x="40" y="62" font-size="20" text-anchor="middle">🐼</text><text x="40" y="75" font-size="5" text-anchor="middle" fill="#2E4A60" font-family="sans-serif" font-weight="bold">YUKI SHAMPOO</text></svg>
-      </div>
-      <div class="cat-name">Hair & Scalp</div>
-    </div>
-    <div class="cat-item">
-      <div class="cat-img" style="background:#E8EDE8;flex-direction:column;gap:8px;">
-        <svg width="80" height="120" viewBox="0 0 80 120"><rect x="24" y="18" width="32" height="84" rx="8" fill="#4A6B40"/><rect x="30" y="7" width="20" height="14" rx="5" fill="#2E4B28"/><rect x="26" y="30" width="28" height="64" rx="6" fill="#FAF8F4" opacity=".93"/><text x="40" y="62" font-size="18" text-anchor="middle">🦋</text><text x="40" y="74" font-size="5" text-anchor="middle" fill="#2E4B28" font-family="sans-serif" font-weight="bold">NOVA OIL</text></svg>
-      </div>
-      <div class="cat-name">Body Oils</div>
-    </div>
-    <div class="cat-item">
-      <div class="cat-img" style="background:#EDE8E8;flex-direction:column;gap:8px;">
-        <svg width="80" height="120" viewBox="0 0 80 120"><rect x="16" y="14" width="48" height="92" rx="11" fill="#6B5040"/><rect x="24" y="4" width="32" height="14" rx="5" fill="#4A3428"/><rect x="19" y="28" width="42" height="70" rx="8" fill="#FAF8F4" opacity=".93"/><text x="40" y="62" font-size="20" text-anchor="middle">🦊</text><text x="40" y="74" font-size="5" text-anchor="middle" fill="#4A3428" font-family="sans-serif" font-weight="bold">FINN GEL</text></svg>
-      </div>
-      <div class="cat-name">Cleansing</div>
-    </div>
-    <div class="cat-item">
-      <div class="cat-img" style="background:#EDE8F0;flex-direction:column;gap:8px;">
-        <svg width="80" height="120" viewBox="0 0 80 120"><rect x="26" y="12" width="28" height="96" rx="8" fill="#4A4070"/><rect x="32" y="4" width="16" height="12" rx="4" fill="#2E2850"/><rect x="28" y="24" width="24" height="76" rx="6" fill="#FAF8F4" opacity=".93"/><text x="40" y="60" font-size="18" text-anchor="middle">🐢</text><text x="40" y="72" font-size="5" text-anchor="middle" fill="#2E2850" font-family="sans-serif" font-weight="bold">MILO CREAM</text></svg>
-      </div>
-      <div class="cat-name">Protection</div>
-    </div>
-    <div class="cat-item">
-      <div class="cat-img" style="background:#EEEAE5;flex-direction:column;gap:8px;">
-        <svg width="80" height="120" viewBox="0 0 80 120"><ellipse cx="40" cy="75" rx="28" ry="22" fill="#8B7040"/><ellipse cx="40" cy="55" rx="26" ry="28" fill="#A08050"/><text x="40" y="60" font-size="18" text-anchor="middle">🐥</text><text x="40" y="95" font-size="5" text-anchor="middle" fill="#6B5030" font-family="sans-serif" font-weight="bold">KIKO POWDER</text></svg>
-      </div>
-      <div class="cat-name">Powder</div>
-    </div>
-  </div>
-</section>
-
-<!-- RECOMMENDED READING -->
-<section class="reading" id="reading">
-  <div class="section-eyebrow">Caleo Journal</div>
-  <div class="section-title" style="font-family:'Cormorant Garamond',serif;font-size:38px;font-weight:300;">Recommended reading</div>
-  <div class="reading-grid">
-    <div class="read-item">
-      <div class="read-img" style="background:#2A1E12;">
-        <svg width="100%" height="200" viewBox="0 0 400 200">
-          <rect width="400" height="200" fill="#2A1E12"/>
-          <ellipse cx="200" cy="100" rx="120" ry="80" fill="rgba(200,149,90,0.15)"/>
-          <text x="200" y="85" font-family="serif" font-size="48" text-anchor="middle" fill="rgba(245,240,232,0.15)">🌿</text>
-          <text x="200" y="140" font-family="serif" font-size="11" text-anchor="middle" fill="rgba(245,240,232,0.3)" letter-spacing="3">INGREDIENTS</text>
-        </svg>
-      </div>
-      <div class="read-category">Ingredients</div>
-      <div class="read-title">The botanicals behind Caleo's formulas</div>
-      <div class="read-meta">Five-minute read</div>
-    </div>
-    <div class="read-item">
-      <div class="read-img" style="background:#1E2A1A;">
-        <svg width="100%" height="200" viewBox="0 0 400 200">
-          <rect width="400" height="200" fill="#1E2A1A"/>
-          <ellipse cx="200" cy="100" rx="120" ry="80" fill="rgba(90,149,80,0.15)"/>
-          <text x="200" y="85" font-family="serif" font-size="48" text-anchor="middle" fill="rgba(245,240,232,0.15)">🛁</text>
-          <text x="200" y="140" font-family="serif" font-size="11" text-anchor="middle" fill="rgba(245,240,232,0.3)" letter-spacing="3">RITUAL</text>
-        </svg>
-      </div>
-      <div class="read-category">Ritual</div>
-      <div class="read-title">Building a bath routine your baby will love</div>
-      <div class="read-meta">Three-minute read</div>
-    </div>
-    <div class="read-item">
-      <div class="read-img" style="background:#1A1A2A;">
-        <svg width="100%" height="200" viewBox="0 0 400 200">
-          <rect width="400" height="200" fill="#1A1A2A"/>
-          <ellipse cx="200" cy="100" rx="120" ry="80" fill="rgba(80,80,149,0.15)"/>
-          <text x="200" y="85" font-family="serif" font-size="48" text-anchor="middle" fill="rgba(245,240,232,0.15)">✨</text>
-          <text x="200" y="140" font-family="serif" font-size="11" text-anchor="middle" fill="rgba(245,240,232,0.3)" letter-spacing="3">CHARACTERS</text>
-        </svg>
-      </div>
-      <div class="read-category">Characters</div>
-      <div class="read-title">Meet the nine characters of the Caleo universe</div>
-      <div class="read-meta">Four-minute read</div>
-    </div>
-  </div>
-</section>
-
-<!-- WAITLIST -->
-<section class="waitlist-sec" id="waitlist">
-  <div class="wl-eyebrow">Launching 2026 — India</div>
-  <div class="wl-title">The first to know<br>are the <em>first to receive.</em></div>
-  <div class="wl-sub">Register your interest and receive advance notice of our launch, an exclusive founding member discount, and a complimentary sample with your first order.</div>
-  <div class="wl-form">
-    <input class="wl-input" type="email" id="wl-email" placeholder="Email address"/>
-    <button class="wl-btn" onclick="joinWaitlist()">Register interest</button>
-  </div>
-  <div class="wl-success" id="wl-success">You have been added to our list. We look forward to writing to you.</div>
-  <div style="margin-top:16px;" class="wl-note">Your details will not be shared with third parties.</div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <div class="footer-top">
-    <div>
-      <div class="footer-logo">Caleo.</div>
-      <div class="footer-tagline">Crafted for the gentlest skin in the world. Natural baby skincare, made in India.</div>
-    </div>
-    <div class="footer-col">
-      <h4>Products</h4>
-      <ul>
-        <li><a href="#">Zuri Lotion</a></li>
-        <li><a href="#">Finn Shower Gel</a></li>
-        <li><a href="#">Kiko Powder</a></li>
-        <li><a href="#">Milo Cream</a></li>
-        <li><a href="#">Nova Baby Oil</a></li>
-        <li><a href="#">Yuki Shampoo</a></li>
-        <li><a href="#">All products</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Caleo</h4>
-      <ul>
-        <li><a href="#">Our story</a></li>
-        <li><a href="#">Ingredients</a></li>
-        <li><a href="#">Characters</a></li>
-        <li><a href="#">Journal</a></li>
-        <li><a href="#">Stockists</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Support</h4>
-      <ul>
-        <li><a href="#">Contact us</a></li>
-        <li><a href="#">FAQ</a></li>
-        <li><a href="#">Shipping</a></li>
-        <li><a href="#">Returns</a></li>
-        <li><a href="#">Wholesale</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <div class="footer-copy">© 2026 Caleo Baby Skincare. All rights reserved.</div>
-    <div class="footer-copy">Warmth · Care · India</div>
-  </div>
-</footer>
-
 <script>
-const SUPABASE_URL='https://rhggxbnolyhtbduvdrsh.supabase.co';
-const SUPABASE_KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJoZ2d4Ym5vbHlodGJkdXZkcnNoIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg3NTMyMjUsImV4cCI6MjA5NDMyOTIyNX0.mgpPjnLmOInCE78vxorUNKiI0K0czJpDTchRd12E29k';
-async function joinWaitlist(){
-  const email=document.getElementById('wl-email').value.trim();
-  if(!email||!email.includes('@')){alert('Please enter a valid email address.');return;}
-  try{
-    const res=await fetch(`${SUPABASE_URL}/rest/v1/waitlist`,{
-      method:'POST',
-      headers:{'Content-Type':'application/json','apikey':SUPABASE_KEY,'Authorization':'Bearer '+SUPABASE_KEY,'Prefer':'return=minimal'},
-      body:JSON.stringify({email,source:'website'})
-    });
-    if(res.ok||res.status===201){
-      document.querySelector('.wl-form').style.display='none';
-      document.getElementById('wl-success').style.display='block';
+
+/* =========================
+FADE UP ON SCROLL
+========================= */
+
+const observer = new IntersectionObserver((entries)=>{
+
+  entries.forEach(entry=>{
+
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
     }
-  } catch(e){console.log(e);}
-}
-document.getElementById('wl-email').addEventListener('keypress',e=>{if(e.key==='Enter')joinWaitlist();});
+
+  });
+
+},{
+  threshold:0.15
+});
+
+document.querySelectorAll('.fade-up').forEach(el=>{
+  observer.observe(el);
+});
+
+/* =========================
+PARALLAX HERO
+========================= */
+
+window.addEventListener('scroll',()=>{
+
+  const scrolled = window.pageYOffset;
+
+  const heroVideo =
+    document.querySelector('.hero-video');
+
+  if(heroVideo){
+
+    heroVideo.style.transform =
+      `scale(1.04) translateY(${scrolled * 0.12}px)`;
+
+  }
+
+});
+
 </script>
-</div>
