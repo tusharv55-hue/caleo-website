@@ -369,8 +369,8 @@ footer{background:var(--deep);padding:60px 48px 32px;border-top:0.5px solid rgba
 <!-- SPLIT 1 -->
 <section class="split" id="story">
   <div class="split-img" style="background:#1A1208;position:relative;overflow:hidden;">
-    <video autoplay muted loop playsinline webkit-playsinline style="width:100%;height:100%;object-fit:cover;min-height:540px;pointer-events:none;">
-      <source src="https://res.cloudinary.com/drimna23g/video/upload/q_auto,f_auto/v1778963877/7505482-uhd_3840_2160_30fps_bjh5iz.mp4" type="video/mp4"/>
+    <video id="split-video-1" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" preload="auto" style="width:100%;height:100%;object-fit:cover;min-height:540px;pointer-events:none;">
+      <source src="https://res.cloudinary.com/drimna23g/video/upload/q_auto,f_mp4,w_1280/v1778963877/7505482-uhd_3840_2160_30fps_bjh5iz.mp4" type="video/mp4"/>
     </video>
     <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(26,18,8,0.15) 0%,rgba(26,18,8,0.4) 100%);"></div>
     <div style="position:absolute;bottom:24px;left:24px;font-family:Georgia,serif;font-size:12px;color:rgba(245,240,232,0.4);letter-spacing:3px;font-style:italic;">the massage ritual</div>
@@ -392,8 +392,8 @@ footer{background:var(--deep);padding:60px 48px 32px;border-top:0.5px solid rgba
     <button class="split-link-r">Our ingredients →</button>
   </div>
   <div class="split-img" style="background:#1A1208;position:relative;overflow:hidden;">
-    <video autoplay muted loop playsinline webkit-playsinline style="width:100%;height:100%;object-fit:cover;min-height:540px;pointer-events:none;">
-      <source src="https://res.cloudinary.com/drimna23g/video/upload/q_auto,f_auto/v1778965653/6848980-hd_1920_1080_24fps_yv4bqz.mp4" type="video/mp4"/>
+    <video id="split-video-2" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" preload="auto" style="width:100%;height:100%;object-fit:cover;min-height:540px;pointer-events:none;">
+      <source src="https://res.cloudinary.com/drimna23g/video/upload/q_auto,f_mp4,w_1280/v1778965653/6848980-hd_1920_1080_24fps_yv4bqz.mp4" type="video/mp4"/>
     </video>
     <div style="position:absolute;inset:0;background:linear-gradient(to left,rgba(26,18,8,0.1) 0%,rgba(26,18,8,0.4) 100%);"></div>
     <div style="position:absolute;bottom:24px;right:24px;font-family:Georgia,serif;font-size:12px;color:rgba(245,240,232,0.4);letter-spacing:3px;font-style:italic;">the evening ritual</div>
@@ -601,27 +601,52 @@ document.getElementById('wl-email').addEventListener('keypress',e=>{if(e.key==='
 </script>
 
 <script>
-// Mobile video autoplay fix
+// Mobile video autoplay fix — all videos
 (function(){
-  var v = document.getElementById('hero-video');
-  if(!v) return;
+  var videos = ['hero-video', 'split-video-1', 'split-video-2'];
   
-  // Force play on load
-  v.play().catch(function(){});
+  function playAll() {
+    videos.forEach(function(id) {
+      var v = document.getElementById(id);
+      if(v) {
+        v.muted = true;
+        v.controls = false;
+        v.removeAttribute('controls');
+        v.play().catch(function(){});
+      }
+    });
+  }
   
-  // iOS Safari fix
-  document.addEventListener('touchstart', function(){
-    v.play().catch(function(){});
-  }, {once: true});
+  // Play on load
+  playAll();
+  
+  // iOS first touch fix
+  document.addEventListener('touchstart', playAll, {once: true});
   
   // Visibility change fix
   document.addEventListener('visibilitychange', function(){
-    if(!document.hidden) v.play().catch(function(){});
+    if(!document.hidden) playAll();
   });
   
-  // Remove controls completely
-  v.removeAttribute('controls');
-  v.controls = false;
+  // Intersection Observer — play when visible
+  if('IntersectionObserver' in window) {
+    videos.forEach(function(id) {
+      var v = document.getElementById(id);
+      if(!v) return;
+      var obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if(e.isIntersecting) {
+            v.muted = true;
+            v.play().catch(function(){});
+          }
+        });
+      }, {threshold: 0.3});
+      obs.observe(v);
+    });
+  }
+  
+  // Page focus fix
+  window.addEventListener('focus', playAll);
 })();
 </script>
 
