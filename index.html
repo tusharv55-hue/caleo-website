@@ -483,14 +483,14 @@ footer{background:var(--deep);padding:60px 48px 32px;border-top:0.5px solid rgba
 
 
 <!-- LAB VIDEO SECTION - Full Width -->
-<section style="position:relative;width:100%;height:70vh;overflow:hidden;border-top:0.5px solid rgba(245,240,232,0.08);">
-  <video id="lab-video-full" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" preload="auto" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
+<section style="position:relative;width:100%;height:70vh;min-height:400px;overflow:hidden;border-top:0.5px solid rgba(245,240,232,0.08);">
+  <video id="lab-video-full" autoplay muted loop playsinline webkit-playsinline x5-playsinline x5-video-player-type="h5" x5-video-player-fullscreen="false" preload="auto" style="width:100%;height:100%;object-fit:cover;pointer-events:none;">
     <source src="https://res.cloudinary.com/drimna23g/video/upload/q_auto,f_mp4,w_1280/v1779000848/8514716-uhd_3840_2160_24fps_ilu5rr.mp4" type="video/mp4"/>
   </video>
   <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(26,18,8,0.75) 0%,rgba(26,18,8,0.75) 40%,rgba(26,18,8,0.3) 70%,rgba(26,18,8,0.1) 100%);"></div>
-  <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 64px;">
+  <div style="position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 24px;">
     <div style="font-size:11px;letter-spacing:3px;text-transform:uppercase;color:rgba(245,240,232,0.45);margin-bottom:20px;font-family:'Jost',sans-serif;">Quality & Safety</div>
-    <div style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:#F5F0E8;line-height:1.1;margin-bottom:20px;max-width:560px;">47 quality checks.<br><em>Every single batch.</em></div>
+    <div style="font-family:'Cormorant Garamond',serif;font-size:clamp(28px,5vw,52px);font-weight:300;color:#F5F0E8;line-height:1.1;margin-bottom:20px;max-width:560px;">47 quality checks.<br><em>Every single batch.</em></div>
     <div style="font-size:14px;color:rgba(245,240,232,0.55);max-width:420px;line-height:1.9;margin-bottom:32px;font-family:'Jost',sans-serif;font-weight:300;">Every Caleo formula is assembled in a certified laboratory and undergoes rigorous testing before it reaches your baby's skin. No compromise. Ever.</div>
     <div style="font-size:11px;letter-spacing:2px;text-transform:uppercase;color:#B8873A;border-bottom:0.5px solid #B8873A;padding-bottom:3px;display:inline-block;cursor:pointer;font-family:'Jost',sans-serif;">Discover our process →</div>
   </div>
@@ -622,7 +622,7 @@ document.getElementById('wl-email').addEventListener('keypress',e=>{if(e.key==='
 <script>
 // Mobile video autoplay fix — all videos
 (function(){
-  var videos = ['hero-video', 'split-video-1', 'split-video-2'];
+  var videos = ['hero-video', 'split-video-1', 'split-video-2', 'lab-video-full'];
   
   function playAll() {
     videos.forEach(function(id) {
