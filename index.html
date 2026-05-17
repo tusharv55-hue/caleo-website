@@ -63,7 +63,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:0 48px
 .products-row{display:flex;gap:1px;background:var(--line);}
 .prod-item{flex:1;background:var(--offwhite);transition:all .3s;cursor:pointer;}
 .prod-item:hover .prod-img-wrap{transform:scale(1.03);}
-.prod-img-area{height:340px;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;}
+.prod-img-area{height:280px;overflow:hidden;display:flex;align-items:center;justify-content:center;position:relative;}
 .prod-img-wrap{transition:transform .5s ease;display:flex;align-items:center;justify-content:center;width:100%;height:100%;}
 .prod-label{position:absolute;top:14px;left:14px;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--amber);font-weight:500;}
 .prod-details{padding:24px 22px 30px;border-top:0.5px solid var(--line);}
@@ -145,6 +145,7 @@ footer{background:var(--deep);padding:60px 48px 32px;border-top:0.5px solid rgba
 @media(max-width:1024px){
   .products-row{flex-wrap:wrap;}
   .prod-item{flex:0 0 calc(50% - 1px);}
+  .prod-img-area{height:220px;}
   .footer-top{grid-template-columns:1fr 1fr;}
 }
 @media(max-width:768px){
@@ -157,6 +158,8 @@ footer{background:var(--deep);padding:60px 48px 32px;border-top:0.5px solid rgba
   .split-img{height:320px;}
   .products-row{flex-direction:column;}
   .prod-item{flex:1;}
+  .prod-img-area{height:260px;}
+  .prod-img-area img{height:180px !important;}
   .reading-grid{grid-template-columns:1fr;}
   .all-grid{grid-template-columns:1fr 1fr;}
   .footer-top{grid-template-columns:1fr 1fr;padding:0 20px;}
@@ -319,10 +322,10 @@ footer{background:var(--deep);padding:60px 48px 32px;border-top:0.5px solid rgba
   </div>
   <div class="products-row">
     <div class="prod-item">
-      <div class="prod-img-area" style="background:#F0EAE0;">
+      <div class="prod-img-area" style="background:#F0EAE0;padding:16px;">
         <span class="prod-label">New addition</span>
         <div class="prod-img-wrap">
-          <img src="https://res.cloudinary.com/drimna23g/image/upload/q_auto,f_auto,c_fit,h_300/v1778967775/ChatGPT_Image_May_17_2026_03_06_23_AM_fjgohd.png" alt="Zuri Daily Lotion" style="height:260px;width:auto;object-fit:contain;"/>
+          <img src="https://res.cloudinary.com/drimna23g/image/upload/q_auto,f_auto,c_fit,h_300/v1778967775/ChatGPT_Image_May_17_2026_03_06_23_AM_fjgohd.png" alt="Zuri Daily Lotion" style="height:200px;width:auto;object-fit:contain;max-width:100%;"/>
         </div>
       </div>
       <div class="prod-details">
@@ -334,10 +337,10 @@ footer{background:var(--deep);padding:60px 48px 32px;border-top:0.5px solid rgba
       </div>
     </div>
     <div class="prod-item">
-      <div class="prod-img-area" style="background:#ECEAE6;">
+      <div class="prod-img-area" style="background:#ECEAE6;padding:16px;">
         <span class="prod-label">Bestseller</span>
         <div class="prod-img-wrap">
-          <img src="https://res.cloudinary.com/drimna23g/image/upload/q_auto,f_auto,c_fit,h_300/v1778967769/ChatGPT_Image_May_17_2026_03_07_11_AM_yiwpna.png" alt="Nova Baby Oil" style="height:260px;width:auto;object-fit:contain;"/>
+          <img src="https://res.cloudinary.com/drimna23g/image/upload/q_auto,f_auto,c_fit,h_300/v1778967769/ChatGPT_Image_May_17_2026_03_07_11_AM_yiwpna.png" alt="Nova Baby Oil" style="height:200px;width:auto;object-fit:contain;max-width:100%;"/>
         </div>
       </div>
       <div class="prod-details">
@@ -349,9 +352,9 @@ footer{background:var(--deep);padding:60px 48px 32px;border-top:0.5px solid rgba
       </div>
     </div>
     <div class="prod-item">
-      <div class="prod-img-area" style="background:#E8ECEE;">
+      <div class="prod-img-area" style="background:#E8ECEE;padding:16px;">
         <div class="prod-img-wrap">
-          <img src="https://res.cloudinary.com/drimna23g/image/upload/q_auto,f_auto,c_fit,h_300/v1778967765/ChatGPT_Image_May_17_2026_03_08_02_AM_euw5qz.png" alt="Yuki Baby Shampoo" style="height:260px;width:auto;object-fit:contain;"/>
+          <img src="https://res.cloudinary.com/drimna23g/image/upload/q_auto,f_auto,c_fit,h_300/v1778967765/ChatGPT_Image_May_17_2026_03_08_02_AM_euw5qz.png" alt="Yuki Baby Shampoo" style="height:200px;width:auto;object-fit:contain;max-width:100%;"/>
         </div>
       </div>
       <div class="prod-details">
