@@ -198,9 +198,21 @@ footer{background:var(--deep);padding:60px 48px 32px;border-top:0.5px solid rgba
 .popup-success{display:none;text-align:center;padding:20px 0;}
 .popup-success-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:300;color:var(--deep);margin-bottom:10px;}
 .popup-success-body{font-size:13px;color:var(--soft);line-height:1.8;font-style:italic;}
+
+/* CUSTOM CURSOR */
+*{cursor:none !important;}
+.cursor-dot{position:fixed;width:8px;height:8px;background:#B8873A;border-radius:50%;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:transform 0.1s ease, background 0.2s ease;mix-blend-mode:difference;}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(184,135,58,0.7);border-radius:50%;pointer-events:none;z-index:99998;transform:translate(-50%,-50%);transition:width 0.3s ease, height 0.3s ease, border-color 0.3s ease;mix-blend-mode:difference;}
+.cursor-dot.hover{transform:translate(-50%,-50%) scale(2.5);background:#F5F0E8;}
+.cursor-ring.hover{width:60px;height:60px;border-color:rgba(245,240,232,0.5);}
+@media(max-width:768px){.cursor-dot,.cursor-ring{display:none;}}
 </style>
 </head>
 <body>
+<!-- CUSTOM CURSOR -->
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-ring" id="cursor-ring"></div>
+
 
 <a class="wa-float" href="https://wa.me/917000000000?text=Hi%20Caleo!%20I%20want%20to%20know%20more." target="_blank" aria-label="WhatsApp">💬</a>
 
@@ -777,5 +789,58 @@ document.getElementById('popup-email').addEventListener('keypress', function(e){
 });
 </script>
 
+<script>
+// Custom Cursor
+(function(){
+  var dot = document.getElementById('cursor-dot');
+  var ring = document.getElementById('cursor-ring');
+  if(!dot || !ring) return;
+
+  var mouseX = 0, mouseY = 0;
+  var ringX = 0, ringY = 0;
+
+  document.addEventListener('mousemove', function(e){
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+
+    // Dot follows instantly
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
+  });
+
+  // Ring follows with smooth delay
+  function animateRing(){
+    ringX += (mouseX - ringX) * 0.12;
+    ringY += (mouseY - ringY) * 0.12;
+    ring.style.left = ringX + 'px';
+    ring.style.top = ringY + 'px';
+    requestAnimationFrame(animateRing);
+  }
+  animateRing();
+
+  // Hover effect on interactive elements
+  var hoverEls = document.querySelectorAll('a, button, .prod-item, .read-item, .cat-item, .all-card, .nav-logo, .hero-cta');
+  hoverEls.forEach(function(el){
+    el.addEventListener('mouseenter', function(){
+      dot.classList.add('hover');
+      ring.classList.add('hover');
+    });
+    el.addEventListener('mouseleave', function(){
+      dot.classList.remove('hover');
+      ring.classList.remove('hover');
+    });
+  });
+
+  // Hide on mouse leave window
+  document.addEventListener('mouseleave', function(){
+    dot.style.opacity = '0';
+    ring.style.opacity = '0';
+  });
+  document.addEventListener('mouseenter', function(){
+    dot.style.opacity = '1';
+    ring.style.opacity = '1';
+  });
+})();
+</script>
 </body>
 </html>
